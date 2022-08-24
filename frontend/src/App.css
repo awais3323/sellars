@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+  }
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+#input::-webkit-outer-spin-button,
+#input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"]{
+    -moz-appearance: textfield;
+}
+.redColor{
+    color: red;
+  }
+  .greenColor{
+    color: green;
+  }
+  body::-webkit-scrollbar {
+    width: 4px;               /* width of the entire scrollbar */
+  }
+  body::-webkit-scrollbar-track {
+    background: transparent;        /* color of the tracking area */
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: #ff8c32;    /* color of the scroll thumb */
+    border-radius: 10px;       /* roundness of the scroll thumb */
+    border: 3px solid transparent;  /* creates padding around scroll thumb */
+  }

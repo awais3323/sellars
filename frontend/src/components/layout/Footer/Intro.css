@@ -1,0 +1,22 @@
+:root {
+	--customColor: #24262b;
+ }
+.myDiv{
+    display: flex;    
+    flex-direction: row;
+    align-items: center;justify-content: center;
+    background-color: transparent;
+    word-spacing: 0.5vmax;
+    color: var(--customColor);
+}
+.heart{
+    color: red;
+    margin: 0 0.5vmax;
+}
+.atag{
+    margin: 0 0.5vmax;
+    word-spacing:0.2vmax ;
+    text-decoration: none;
+    /* color: black; */
+    color: #FF8C32;
+}

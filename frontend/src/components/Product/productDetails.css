@@ -1,0 +1,535 @@
+:root {
+  --customColor: #212429;
+  --orange:#ff8c32;
+}
+
+.ProductDetails {
+  background-color: rgb(255, 255, 255);
+  width: 100vw;
+  max-width: 100%;
+  padding: 6vmax;
+  box-sizing: border-box;
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.ProductDetails > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  padding: 3vmax;
+  box-sizing: border-box;
+  /* background: red; */
+}
+.orange
+{
+  color: var(--orange);
+}
+.ProductDetails > div:last-child {
+  align-items: flex-start;
+}
+.numberinp {
+  background-color: transparent;
+}
+.whiteC {
+  color: white;
+}
+.blackC {
+  color: black;
+}
+.CarouselImage {
+  width: 35vmax;
+  /* width: 35vmax; */
+  /* height: 30vmax; */
+  border-radius: 50px;
+}
+.detailsBlock-1{
+  padding: 1vmax;
+
+}
+
+.detailsBlock-1 > h2 {
+  color: var(--customColor);
+  font: 600 2.6vmax "poppins";
+}
+.copier{
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  height: 4vmax;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: red; */
+  color: var(--customColor);
+  width: 100%;
+  /* font: 600 2.6vmax "poppins"; */
+
+}
+.idpara{
+  margin: 1vmax 0;
+  font-size: 0.9vmax;
+}
+.logoCopy{
+  color: var(--customColor);
+  font: 600 0.8vmax "poppins";
+  margin: 0 1vmax;
+  cursor: pointer;
+  padding: 0.51vmax;
+  border-radius: 10px;
+  background-color: rgba(128, 128, 128, 0.471);
+}
+
+.detailsBlock-1 > p {
+  color: var(--customColor);
+  font: 200 0.8vmax "poppins";
+}
+.priceFlex {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: var(--customColor);
+}
+.detailsBlock-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center;
+  border-bottom: 1px solid #ff8c32;
+  /* background-color: red; */
+  width: 70%;
+  padding: 2vmax 0;
+}
+
+.detailsBlock-2-span {
+  font: 500 0.8vmax "poppins";
+  display: flex;
+  flex-direction: row;
+  padding: 0.31vmax;
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: red; */
+  color: var(--customColor);
+}
+.detailsBlock-2-span-2 {
+  background-color: #ff8b326b;
+  border: 2px solid #ff8c32;
+  padding: 0.41vmax;
+  color: var(--customColor);
+  margin: 10px;
+  border-radius: 5px;
+}
+.detailsBlock-3 {
+  padding: 1vmax;
+  /* background-color: aqua; */
+  text-align: center;
+}
+
+.detailsBlock-3 > h1 {
+  color: var(--customColor);
+  font: 400 1.8vmax "Franklin Gothic Medium";
+  margin: 1vmax 0;
+}
+.detailsBlock-3-1 {
+  display: flex;
+  align-items: center;
+}
+
+.detailsBlock-3-1-1 > button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.616);
+  border-radius: 200px;
+  padding: 0.5vmax;
+  cursor: pointer;
+  color: white;
+  transition: all 0.5s;
+}
+.detailsBlock-3-1-1 > button:hover {
+  background-color: #ff8c32;
+}
+
+.detailsBlock-3-1-1 > input {
+  border: none;
+  padding: 0.5vmax;
+  width: 3vmax;
+  text-align: center;
+  outline: none;
+  /* border:2px solid black; */
+  font: 400 0.8vmax "poppins";
+  color: black;
+  /* background-color: red; */
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.detailsBlock-3-1 > button:last-child {
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: all 0.5s;
+  background-color: #ff8c32;
+  font: 500 0.7vmax "poppins";
+  border-radius: 10px;
+  border: 1px solid #ff8c32;
+  padding: 0.5vmax 2vmax;
+  margin: 1vmax;
+  outline: none;
+}
+
+.detailsBlock-3-1 > button:last-child:hover {
+  background-color: transparent;
+  font: 900 0.8vmax "poppins";
+  color: #ff8c32;
+}
+
+.detailsBlock-3 > p {
+  /* border-top: 1px solid #e91e62c6; */
+  border-bottom: 1px solid #ff8c32;
+  padding: 1vmax 0;
+  color: var(--customColor);
+  font: 400 1vmax "poppins";
+  margin: 1vmax 0;
+}
+
+.detailsBlock-4 {
+  color: var(--customColor);
+  font: 500 1.2vmax "poppins";
+}
+
+.detailsBlock-4 > p {
+  /* background-color: red; */
+  color: var(--customColor);
+  font: 300 0.8vmax "poppins";
+  line-height: 40px;
+}
+.twobuts {
+  display: flex;
+  flex-direction: row;
+  /* background-color: yellow; */
+  width: 50%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between
+}
+.popUpReview{
+  background-color: red !important;
+}
+.submitReview {
+  /* width: 100%; */
+  border: none;
+  background-color: #ff8c32;
+  font: 500 0.7vmax "poppins";
+  border-radius: 10px;
+  padding: 0.6vmax 2vmax;
+  margin: 1vmax 0;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s;
+  outline: none;
+  border: 1px solid #ff8c32;
+  transition: all ease 1s ease;
+}
+.submitReview:hover {
+  background-color: transparent;
+  color: #ff8c32;
+  transition: all ease 1s ease;
+}
+.extraAdd {
+  background: transparent;
+  color: #ff8c32;
+}
+.extraAdd:hover {
+  background: #ff8c32;
+  color: white;
+}
+
+.submitDialog {
+  display: flex;
+  flex-direction: column;
+}
+.submitDialogTextArea {
+  border: 1px solid rgba(0, 0, 0, 0.082);
+  margin: 1vmax 0;
+  outline: none;
+  padding: 1rem;
+  font: 300 1rem "poppins";
+}
+.headingTags{
+  color: var(--customColor);
+  font: 500 1vmax "poppins";
+  
+}
+.reviewsHeading {
+  color: #000000be;
+  font: 500 1.4vmax "poppins";
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.226);
+  padding: 1vmax;
+  width: 20vmax;
+  margin: auto;
+  margin-bottom: 4vmax;
+}
+.reviews {
+  display: flex;
+  overflow: auto;
+}
+.reviews::-webkit-scrollbar {
+  height: 8px;
+}
+.reviews::-webkit-scrollbar-track {
+  background: transparent;        
+  width: 1vmax;
+
+}
+.reviews::-webkit-scrollbar-thumb {
+  background-color: grey;    
+    border-radius: 10px;       
+    border: 1px solid transparent; 
+    /* width: 10px; */
+}
+.legend{
+  color: var(--orange) !important;
+  font-size: 1vmax !important;
+  text-align: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', "poppins" !important;
+}
+.reviewCard {
+  flex: none;
+  border: 1px solid rgba(56, 56, 56, 0.116);
+  border: 1px solid rgba(128, 128, 128, 0.459);
+  border-left: 3px solid #ff8c32;
+  width: 30vmax;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1vmax;
+  padding: 1.5vmax;
+}
+.reviewCard:hover {
+}
+.sideBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+.sideBox > img {
+  width: 4vmax;
+  border-radius: 100%;
+}
+.sideBox > p {
+  color: rgba(0, 0, 0, 0.836);
+  font: 600 1.2vmax "poppins";
+  /* padding: 1vmax; */
+}
+.StarsBox {
+  /* background-color: greenyellow; */
+  display: flex;
+  padding: 1vmax;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.reviewCardComment {
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.745);
+  text-align: center;
+  font: 300 0.8vmax "poppins";
+}
+
+.noReviews {
+  font: 400 1.3vmax "poppins";
+  text-align: center;
+
+  /* color: rgba(0, 0, 0, 0.548); */
+}
+.reviewContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+
+}
+.slider{
+  width: 25vmax !important;
+  /* height: 10vmax !important; */
+}
+.hell{
+  /* position: relative; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  height: 9vh;
+  color: var(--customColor);
+  text-align: center;
+  /* width: 150%; */
+}
+.maylikeproducts{
+  margin-top: 5vmax;
+
+}
+.moreProducts{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 1200px) {
+  .ProductDetails {
+    flex-direction: column;
+    height: unset;
+  }
+  .detailsBlock-2-span {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hell{
+    /* position: relative; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: transparent;
+    height: 20vh;
+    color: var(--customColor);
+  }
+  .CarouselImage{
+    width: 27vmax;
+  }
+}
+@media screen and (max-width: 600px) {
+  .ProductDetails {
+    flex-direction: column;
+    height: unset;
+  }
+  .idpara{
+    margin: 1vmax 0;
+    font-size: 1.82vmax;
+  }
+  .logoCopy{
+    font: 400 1.8vmax "poppins";
+  margin: 1vmax 1vmax;
+  }
+  .headingTags{
+    font: 500 2.6vmax "poppins";    
+  }
+  .reviews::-webkit-scrollbar {
+    height: 5px;
+  }
+  .ProductDetails > div:last-child {
+    align-items: center;
+  }
+
+  .detailsBlock-1 > h2 {
+    font-size: 2.8vmax;
+    text-align: center;
+  }
+
+  .detailsBlock-1 > p {
+    text-align: center;
+    font-size: 1vmax;
+  }
+
+  .detailsBlock-2 {
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+  .detailsBlock-2 > span {
+    flex-direction: column;
+    width: 100%;
+    font-size: 1.5vmax;
+  }
+  .detailsBlock-3{
+    width: 120%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+  .detailsBlock-3 > h1 {
+    font: 700 3vmax "Franklin Gothic Medium";
+    text-align: center;
+  }
+
+  .detailsBlock-3-1 {
+    flex-direction: column;
+  }
+
+  .detailsBlock-3-1-1 {
+    padding: 2vmax 0;
+  }
+  .detailsBlock-3-1-1 > button {
+    padding: 1.2vmax;
+    width: 4vmax;
+  }
+
+  .detailsBlock-3-1-1 > input {
+    padding: 1.5vmax;
+    width: 5vmax;
+    font: 400 1.8vmax "poppins";
+  }
+
+  .detailsBlock-3-1 > button:last-child {
+    font: 500 1.7vmax "poppins";
+    padding: 1.5vmax;
+    width: 20vmax;
+    margin: 3vmax 0;
+  }
+
+  .detailsBlock-3 > p {
+    padding: 2.5vmax 0;
+    text-align: center;
+    font: 400 2vmax "poppins";
+  }
+
+  .detailsBlock-4 {
+    font: 500 2.5vmax "poppins";
+  text-align: center;
+
+  }
+
+  .detailsBlock-4 > p {
+    font: 300 1.8vmax "poppins";
+  text-align: center;
+    
+  }
+
+  .submitReview {
+    font: 500 1.7vmax "poppins";
+    padding: 1.5vmax;
+    width: 20vmax;
+    margin: 3vmax 0;
+  }
+
+  .sideBox > img {
+    width: 7vmax;
+  }
+  .sideBox > p {
+    font: 600 5vw "poppins";
+  }
+  .reviewCardComment {
+    font: 300 4vw cursive;
+  }
+  .twobuts {
+    width: 100%;
+    justify-content: center;
+  }
+  .mainHeading{
+    margin-bottom: 4vmax;
+  }
+}
+
