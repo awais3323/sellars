@@ -10,7 +10,6 @@ const LowerCatNav = () => {
   const { prodi } = useSelector((state) => state.prods);
 
   let arr = products.map((s) => s.category).reverse();
-  console.log(arr)
 
   let f_arr = [...new Set(arr)];
 

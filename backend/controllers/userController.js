@@ -4,16 +4,33 @@ const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const crypto = require("crypto"); // This is a built in module
-const cloudinary = require("cloudinary")
+const cloudinary = require("cloudinary");
+const { pathToFileURL } = require("url");
 
 
 exports.registerUser = catchAsyncErrors( async (req, res, next) => {
+const myCloud= [];
+let PID;
+let PURL;
+  if(req.body.avatar.length > 100){
 
-  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar,{
-    folder:"avatars",
-    width:750,
-    crop:"scale",
-  })
+    myCloud = await cloudinary.v2.uploader.upload(req.body.avatar,{
+      folder:"avatars",
+      width:750,
+      crop:"scale",
+    })
+  }
+  if(req.body.avatar.length > 100){
+    PID = myCloud.public_id;
+    PURL = myCloud.secure_url;
+  }
+  else{
+    PID  = "HelloGuys"
+    PURL  = req.body.avatar;
+  }
+
+  console.log(typeof(req.body.avatar))
+  console.log(typeof(myCloud.secure_url))
 
   const { name, email, password } = req.body;
 
@@ -22,8 +39,8 @@ exports.registerUser = catchAsyncErrors( async (req, res, next) => {
     email,
     password,
     avatar: {
-      public_id: myCloud.public_id,
-      url: myCloud.secure_url,
+      public_id: PID,
+      url: PURL,
     },
   });
   sendToken(user, 201, res);

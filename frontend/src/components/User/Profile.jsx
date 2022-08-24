@@ -20,6 +20,8 @@ const Profile = () => {
     }
   }, [navigate, isAuthenticated]);
 
+
+  // console.log(user)
   return (
     <>
       {user ? (

@@ -16,8 +16,9 @@ import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import Loader from "../layout/Loader/Loader";
 import { barContext } from "../../App";
-
-
+import GoogleLogin from "react-google-login";
+import FacebookLogin from "react-facebook-login";
+import { gapi } from "gapi-script";
 
 const LoginSignUp = () => {
   const dispatch = useDispatch();
@@ -62,6 +63,8 @@ const LoginSignUp = () => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
+    // console.log(avatar)
+    console.log(typeof avatar);
 
     dispatch(register(myForm));
   };
@@ -118,16 +121,63 @@ const LoginSignUp = () => {
     root.style.setProperty("--customColor", "black");
     root.style.setProperty("--customColorin", "white");
   }
-  
+
+  function SucresponseGoogle(res) {
+    console.log("Login");
+    console.log(res.profileObj);
+    // console.log(typeof(res.profileObj.googleId))
+    const number = res.profileObj.googleId;
+    let newstr = number.replace(/1/g, "sell");
+    let newstr_2 = newstr.replace(/0/g, "ars");
+    // setLoginPassword(newstr_2);
+    dispatch(login(res.profileObj.email, newstr_2));
+  }
+
+  function SucresponseGoogle_two(res) {
+    const number = res.profileObj.googleId;
+    let newstr = number.replace(/1/g, "sell");
+    let newstr_2 = newstr.replace(/0/g, "ars");
+    const regForm = new FormData();
+
+    regForm.set("name", res.profileObj.name);
+    regForm.set("email", res.profileObj.email);
+    regForm.set("password", newstr_2);
+    regForm.set("avatar", res.profileObj.imageUrl);
+
+    console.log(res.profileObj.imageUrl);
+    console.log(typeof res.profileObj.imageUrl);
+
+    dispatch(register(regForm));
+  }
+  function FairesponseGoogle(res) {
+    console.error(res);
+  }
+  const clientID =
+    "YourGoogleCloudApiKeyHere";
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: clientID,
+        scope: "",
+      });
+    }
+    gapi.load("client:auth2", start);
+  }, []);
+
+
+  function LO_responseFacebook(res){
+    console.log(res)
+  }
+  function RE_responseFacebook(res){
+    console.log(res)
+  }
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-          <div className="upauth">
-         
-          </div>
+          <div className="upauth"></div>
           <div
             className={`${
               modes ? `LoginSignUpContainer black__bg` : `LoginSignUpContainer`
@@ -140,8 +190,18 @@ const LoginSignUp = () => {
             >
               <div>
                 <div className="login_signUp_toggle">
-                  <p onClick={(e) => switchTabs(e, "login")} style={{ fontFamily: "poppins" }}>LOGIN</p>
-                  <p onClick={(e) => switchTabs(e, "register")} style={{ fontFamily: "poppins" }}>REGISTER</p>
+                  <p
+                    onClick={(e) => switchTabs(e, "login")}
+                    style={{ fontFamily: "poppins" }}
+                  >
+                    LOGIN
+                  </p>
+                  <p
+                    onClick={(e) => switchTabs(e, "register")}
+                    style={{ fontFamily: "poppins" }}
+                  >
+                    REGISTER
+                  </p>
                 </div>
 
                 <button ref={switcherTab}></button>
@@ -180,6 +240,20 @@ const LoginSignUp = () => {
                   className="loginBtn"
                   style={{ fontFamily: "poppins" }}
                 />
+                <GoogleLogin
+                  clientId="YourGoogleCloudApiKeyHere"
+                  buttonText="Continue with Google"
+                  onSuccess={SucresponseGoogle}
+                  onFailure={FairesponseGoogle}
+                  cookiePolicy={"single_host_origin"}
+                />
+                {/* <FacebookLogin
+                  appId="yourfacebookAppIDHere"
+                  autoLoad={true}
+                  fields="name,email,picture"
+                  // onClick={componentClicked}
+                  callback={LO_responseFacebook}
+                /> */}
               </form>
               <form
                 className="signUpForm"
@@ -235,8 +309,22 @@ const LoginSignUp = () => {
                   value="Continue with email"
                   className="signUpBtn"
                   onClick={() => topload()}
-                  style={{ fontFamily: "poppins" }} 
+                  style={{ fontFamily: "poppins" }}
                 />
+                <GoogleLogin
+                  clientId="YourGoogleCloudApiKeyHere"
+                  buttonText="Continue with Google"
+                  onSuccess={SucresponseGoogle_two}
+                  onFailure={FairesponseGoogle}
+                  cookiePolicy={"single_host_origin"}
+                />
+                {/* <FacebookLogin
+                  appId="yourfacebookAppIDHere"
+                  autoLoad={true}
+                  fields="name,email,picture"
+                  // onClick={componentClicked}
+                  callback={RE_responseFacebook}
+                /> */}
               </form>
             </div>
           </div>
