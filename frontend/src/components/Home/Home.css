@@ -272,6 +272,9 @@
     padding: 20px;
     font-size: 1.72vmax;
   }
+  .productCard{
+    border: none;
+  }
 }
 @media screen and (max-width: 650px) {
   .productCard1 {

@@ -51,7 +51,8 @@ const LoginSignUp = () => {
 
   const loginSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(loginEmail, loginPassword));
+    let logger = loginEmail.toLowerCase();
+    dispatch(login(logger, loginPassword));
   };
 
   const registerSubmit = (e) => {
@@ -59,12 +60,11 @@ const LoginSignUp = () => {
 
     const myForm = new FormData();
 
-    myForm.set("name", name);
-    myForm.set("email", email);
+      myForm.set("name", name);
+    myForm.set("email", email.toLowerCase());
     myForm.set("password", password);
     myForm.set("avatar", avatar);
     // console.log(avatar)
-    console.log(typeof avatar);
 
     dispatch(register(myForm));
   };
@@ -123,14 +123,13 @@ const LoginSignUp = () => {
   }
 
   function SucresponseGoogle(res) {
-    console.log("Login");
-    console.log(res.profileObj);
     // console.log(typeof(res.profileObj.googleId))
     const number = res.profileObj.googleId;
     let newstr = number.replace(/1/g, "sell");
     let newstr_2 = newstr.replace(/0/g, "ars");
     // setLoginPassword(newstr_2);
-    dispatch(login(res.profileObj.email, newstr_2));
+    let sender = res.profileObj.email.toLowerCase()
+    dispatch(login(sender, newstr_2));
   }
 
   function SucresponseGoogle_two(res) {
@@ -144,16 +143,13 @@ const LoginSignUp = () => {
     regForm.set("password", newstr_2);
     regForm.set("avatar", res.profileObj.imageUrl);
 
-    console.log(res.profileObj.imageUrl);
-    console.log(typeof res.profileObj.imageUrl);
 
     dispatch(register(regForm));
   }
   function FairesponseGoogle(res) {
-    console.error(res);
   }
   const clientID =
-    "YourGoogleCloudApiKeyHere";
+    "13911652568-pnf2r42dd6pitg1skhj1af5qs1vimrl6.apps.googleusercontent.com";
   useEffect(() => {
     function start() {
       gapi.client.init({
@@ -166,10 +162,10 @@ const LoginSignUp = () => {
 
 
   function LO_responseFacebook(res){
-    console.log(res)
+    // console.log(res)
   }
   function RE_responseFacebook(res){
-    console.log(res)
+    // console.log(res)
   }
   return (
     <Fragment>
@@ -241,14 +237,14 @@ const LoginSignUp = () => {
                   style={{ fontFamily: "poppins" }}
                 />
                 <GoogleLogin
-                  clientId="YourGoogleCloudApiKeyHere"
+                  clientId="13911652568-pnf2r42dd6pitg1skhj1af5qs1vimrl6.apps.googleusercontent.com"
                   buttonText="Continue with Google"
                   onSuccess={SucresponseGoogle}
                   onFailure={FairesponseGoogle}
                   cookiePolicy={"single_host_origin"}
                 />
                 {/* <FacebookLogin
-                  appId="yourfacebookAppIDHere"
+                  appId="5358648967583788"
                   autoLoad={true}
                   fields="name,email,picture"
                   // onClick={componentClicked}
@@ -312,14 +308,14 @@ const LoginSignUp = () => {
                   style={{ fontFamily: "poppins" }}
                 />
                 <GoogleLogin
-                  clientId="YourGoogleCloudApiKeyHere"
+                  clientId="13911652568-pnf2r42dd6pitg1skhj1af5qs1vimrl6.apps.googleusercontent.com"
                   buttonText="Continue with Google"
                   onSuccess={SucresponseGoogle_two}
                   onFailure={FairesponseGoogle}
                   cookiePolicy={"single_host_origin"}
                 />
                 {/* <FacebookLogin
-                  appId="yourfacebookAppIDHere"
+                  appId="5358648967583788"
                   autoLoad={true}
                   fields="name,email,picture"
                   // onClick={componentClicked}

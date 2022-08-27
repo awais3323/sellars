@@ -32,6 +32,10 @@ const productSchema = new mongoose.Schema({
             }
         }
     ],
+    colors:{
+        type: String,
+        required: [true, "Please enter available colors"],
+    },
     category: {
         type: String,
         required: [true, "Category is must"]
@@ -105,6 +109,10 @@ const productSchema = new mongoose.Schema({
             }
         }
     ],
+    idxs:{
+        type: String,
+        required: [true, "Please enter available colors"],
+    },
     user:{
         type:mongoose.Schema.ObjectId,
         ref:"User",

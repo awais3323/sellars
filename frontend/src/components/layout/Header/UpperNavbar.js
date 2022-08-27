@@ -10,7 +10,7 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import { logout } from "../../../actions/userAction";
 import { useAlert } from "react-alert";
 import { barContext } from "../../../App";
-import { topLoadingBarReducer } from "../../../reducers/otherReducer";
+// import { topLoadingBarReducer } from "../../../reducers/otherReducer";
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
@@ -26,7 +26,7 @@ const UpperNavbar = () => {
   const { cartItems } = useSelector((state) => state.cart);
 
   const options = [
-    { icon: <PersonIcon />, name: "Profile", func: account },
+    // { icon: <PersonIcon />, name: "Profile", func: account },
     { icon: <ShoppingCartIcon />, name: `cart(${cartItems.length})`, func: cart },
     { icon: <ListAltIcon />, name: "Orders", func: order },
     { icon: <ExitToAppIcon />, name: "Log Out", func: logoutUser },
@@ -86,7 +86,8 @@ const UpperNavbar = () => {
               sx={{ position: "absolute", bottom: 16, right: 16 }}
               icon={
                 <img
-                  className="speedDialIcon"
+                onClick={()=>account()}
+                className="speedDialIcon"
                   src={user?.avatar?.url || "https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"}
                   alt=""
                 />

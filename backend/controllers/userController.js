@@ -9,7 +9,7 @@ const { pathToFileURL } = require("url");
 
 
 exports.registerUser = catchAsyncErrors( async (req, res, next) => {
-const myCloud= [];
+let myCloud= [];
 let PID;
 let PURL;
   if(req.body.avatar.length > 100){

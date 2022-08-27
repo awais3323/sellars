@@ -51,7 +51,7 @@
   transition: all 0.51s ease-in-out;
 }
 .navbar {
-  z-index: 999;
+  z-index: 10001;
   margin: 0;
   /* border: 2px solid green; */
 }
@@ -149,7 +149,7 @@
 .container3 {
   display: flex;
   align-items: flex-end;
-  z-index: 1000;
+  z-index: 100;
   /* background-color: white !important; */
   width: 100%;
   height: 10vh;
@@ -178,6 +178,7 @@
   cursor: pointer;
   z-index: 200;
   margin-bottom: 8px;
+  /* background: red !important; */
 }
 /* .Linker:first-child{
   background-color: #ff8c32 !important;

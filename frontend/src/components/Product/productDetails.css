@@ -10,6 +10,7 @@
   padding: 6vmax;
   box-sizing: border-box;
   display: flex;
+  align-items: center;
   /* flex-direction: column; */
 }
 
@@ -40,7 +41,7 @@
   color: black;
 }
 .CarouselImage {
-  width: 35vmax;
+  width: 100%;
   /* width: 35vmax; */
   /* height: 30vmax; */
   border-radius: 50px;
@@ -188,7 +189,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .detailsBlock-3 > p {
   /* border-top: 1px solid #e91e62c6; */
-  border-bottom: 1px solid #ff8c32;
+  border-bottom: 1px solid #ff8b32aa;
   padding: 1vmax 0;
   color: var(--customColor);
   font: 400 1vmax "poppins";
@@ -199,7 +200,26 @@ input[type="number"]::-webkit-outer-spin-button {
   color: var(--customColor);
   font: 500 1.2vmax "poppins";
 }
-
+.colorsDiv{
+  width: 80%;
+  color: var(--customColor);
+  font: 500 1.2vmax "poppins";
+  display: flex;
+  flex-direction: row;
+  padding: 0.7vmax;
+  /* background-color: white; */
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.insiderCol{
+  /* background-color: red; */
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  /* background-color: red; */
+  justify-content: space-around;
+  align-items:center;
+}
 .detailsBlock-4 > p {
   /* background-color: red; */
   color: var(--customColor);
@@ -354,7 +374,7 @@ input[type="number"]::-webkit-outer-spin-button {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: transparent;
+  /* background-color: greenyellow; */
 
 }
 .slider{
@@ -403,8 +423,24 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 20vh;
     color: var(--customColor);
   }
-  .CarouselImage{
-    width: 27vmax;
+  .colorsDiv{
+    width: 100%;
+    font: 500 2.2vmax "poppins";
+    display: flex;
+    
+    flex-direction: row;
+    /* background-color: white; */
+    justify-content: space-around;
+    align-items: center;
+  }
+  .insiderCol{
+    /* background-color: red; */
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    /* background-color: white; */
+    justify-content: space-around;
+    align-items: center;
   }
 }
 @media screen and (max-width: 600px) {

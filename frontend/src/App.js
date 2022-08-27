@@ -1,6 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect, createContext, useMemo } from "react";
-// import ProtectedRoute from "./components/Route/ProtectedRoute";
+import React, { useState, useEffect, createContext} from "react";
 import Navbar from "./components/layout/Header/Navbar";
 import UpperNavbar from "./components/layout/Header/UpperNavbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -27,10 +26,12 @@ import ForgotPassword from "./components/User/ForgotPassword";
 import ResetPassword from "./components/User/ResetPassword";
 import Cart from "./components/cart/Cart";
 import { getProduct } from "./actions/productAction";
+// import { useAlert } from "react-alert";
 
 
 export const barContext = createContext();
-function App() {
+
+const App=React.memo(() =>{
   useEffect(() => {
     store.dispatch(loadUser());
     store.dispatch(getProduct());
@@ -54,8 +55,9 @@ function App() {
     setProgress(30);
     setTimeout(() => {
       setProgress(100);
-    }, 150);
+    }, 100);
   };
+
 
   // window.addEventListener("unload",changingState())
 
@@ -120,6 +122,6 @@ function App() {
       </Router>
     </>
   );
-}
-
+},[]
+)
 export default App;

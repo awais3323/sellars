@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect,useContext,useMemo } from "react";
 import "./Navbar.css";
 import { FaSearch } from "react-icons/fa";
 import { FaAngleUp } from "react-icons/fa";
@@ -38,7 +38,7 @@ const Navbar = (props) => {
     AOS.init();
     AOS.refresh();
     dispatch(setDarkMode());
-  }, []);
+  }, [dispatch]);
 
   const searchSubmitHandler = (e) => {
     e.preventDefault();
@@ -53,7 +53,7 @@ const Navbar = (props) => {
   const NavbarFixing = () => {
     if (window.scrollY >= 30) {
       setnavbar(true);
-    } else {
+    } else { 
       setnavbar(false);
     }
   };
