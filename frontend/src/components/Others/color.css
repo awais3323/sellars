@@ -1,0 +1,14 @@
+.colDiv{
+    width: 1.5vmax;
+    height: 1.5vmax;
+    border: 5px solid rgba(128, 128, 128, 0.435);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+    .colDiv{
+        width: 2.5vmax;
+        height: 2.5vmax;
+        border: 2px solid rgba(255, 255, 255, 0.379);
+    }
+}
