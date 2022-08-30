@@ -236,12 +236,14 @@ const LoginSignUp = () => {
                   className="loginBtn"
                   style={{ fontFamily: "poppins" }}
                 />
+                <span className="or">Or</span>
                 <GoogleLogin
                   clientId="13911652568-pnf2r42dd6pitg1skhj1af5qs1vimrl6.apps.googleusercontent.com"
                   buttonText="Continue with Google"
                   onSuccess={SucresponseGoogle}
                   onFailure={FairesponseGoogle}
                   cookiePolicy={"single_host_origin"}
+                  className="GoogleLogin_Button"
                 />
                 {/* <FacebookLogin
                   appId="5358648967583788"
@@ -307,12 +309,14 @@ const LoginSignUp = () => {
                   onClick={() => topload()}
                   style={{ fontFamily: "poppins" }}
                 />
+                <span className="or">Or</span>
                 <GoogleLogin
                   clientId="13911652568-pnf2r42dd6pitg1skhj1af5qs1vimrl6.apps.googleusercontent.com"
                   buttonText="Continue with Google"
                   onSuccess={SucresponseGoogle_two}
                   onFailure={FairesponseGoogle}
                   cookiePolicy={"single_host_origin"}
+                  className="GoogleLogin_Button"
                 />
                 {/* <FacebookLogin
                   appId="5358648967583788"

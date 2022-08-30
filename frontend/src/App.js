@@ -1,8 +1,12 @@
 import "./App.css";
-import React, { useState, useEffect, createContext} from "react";
+import React, { useState, useEffect, createContext } from "react";
 import Navbar from "./components/layout/Header/Navbar";
 import UpperNavbar from "./components/layout/Header/UpperNavbar";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
 import Footer from "./components/layout/Footer/Footer";
 import Home from "./components/Home/Home.js";
 import ProductDetails from "./components/Product/ProductDetails";
@@ -26,12 +30,20 @@ import ForgotPassword from "./components/User/ForgotPassword";
 import ResetPassword from "./components/User/ResetPassword";
 import Cart from "./components/cart/Cart";
 import { getProduct } from "./actions/productAction";
+import Dashboard from "./components/Admin/Dashboard";
+import Notallowed from "./components/Others/Notallowed";
 // import { useAlert } from "react-alert";
-
 
 export const barContext = createContext();
 
-const App=React.memo(() =>{
+const App = React.memo(() => {
+  const [showNav, setshowNav] = useState(null);
+  const [authAdmin, setauthAdmin] = useState(null);
+  const [progress, setProgress] = useState(0);
+  
+  const { modes } = useSelector((state) => state.DarkMode);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+  
   useEffect(() => {
     store.dispatch(loadUser());
     store.dispatch(getProduct());
@@ -41,15 +53,28 @@ const App=React.memo(() =>{
     // return changingState()
   }, []);
 
-  const { modes } = useSelector((state) => state.DarkMode);
-  const { isAuthenticated, user } = useSelector((state) => state.user);
-  const { progressive } = useSelector((state) => state.toploader);
+  useEffect(() => {
+    let checker = window.location.pathname.startsWith("/admin");
+    setshowNav(checker);
+    // console.log(showNav);
+  }, [window.location.pathname]);
+
+  useEffect(()=>{
+    setauthAdmin(isAuthenticated)
+
+  },[isAuthenticated])
+
+
+  window.addEventListener("popstate", () => {
+    let checker2 = window.location.pathname.startsWith("/admin");
+    setshowNav(checker2);
+  });
+
   if (modes) {
     document.body.style.backgroundColor = "black";
   } else {
     document.body.style.backgroundColor = "white";
   }
-  const [progress, setProgress] = useState(0);
 
   const changingState = () => {
     setProgress(30);
@@ -57,18 +82,24 @@ const App=React.memo(() =>{
       setProgress(100);
     }, 100);
   };
-
-
-  // window.addEventListener("unload",changingState())
+  // const location = useLocation();
 
   return (
     <>
       <Router>
         <barContext.Provider value={() => changingState()}>
           <ScrollTotop />
+          {/* <Routes>
+          </Routes> */}
+          {/* on admin side we dont need the navbar , uperrnavbar, lowercatnavbar so this condition will not show the navbar when  */}
           <UpperNavbar />
-          <Navbar />
-          <LowerCatNav />
+          {showNav !== false ||
+            (showNav !== null && (
+              <>
+                <Navbar />
+                <LowerCatNav />
+              </>
+            ))}
           <LoadingBar
             color="#FF8C32"
             progress={progress}
@@ -78,7 +109,12 @@ const App=React.memo(() =>{
             shadow={true}
           />
           <Routes>
-            <Route exact path="/" element={<Home />} />
+            <Route
+              exact
+              path="/admin/dashboard"
+              element={user?.role === "admin" || user?.role === "admin_one"?  <Dashboard isauth = {isAuthenticated}/>:<Notallowed /> }
+            />
+            <Route exact index path="/" element={<Home />} />
             <Route exact path="/products/:id" element={<ProductDetails />} />
             <Route exact path="/product" element={<Products />} />
             <Route exact path="/sale" element={<SaleProducts />} />
@@ -115,13 +151,11 @@ const App=React.memo(() =>{
               path={"/cart"}
               element={isAuthenticated ? <Cart /> : <LoginSignUp />}
             />
-        
           </Routes>
-          <Footer />
+          {showNav !== false || (showNav !== null && <Footer />)}
         </barContext.Provider>
       </Router>
     </>
   );
-},[]
-)
+}, []);
 export default App;

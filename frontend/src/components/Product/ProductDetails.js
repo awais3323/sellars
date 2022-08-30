@@ -28,8 +28,8 @@ const ProductDetails = React.memo(({changingState}) => {
   const [quantity, setquantity] = useState(1);
   const [rating, setRating] = useState(0);
   const [_hobbit,setHobbit]= useState(null)
-  const [filReviews,setfilReviews]= useState(null)
-
+  // const [filReviews,setfilReviews]= useState(null)
+  // console.log(rating)
   const options = {
     edit: false,
     color: "grey",
@@ -69,10 +69,11 @@ const ProductDetails = React.memo(({changingState}) => {
 
 
 // this function is for extracting the reviews from the current watching product
-  function extractReviews(){
-    return product?.reviews?.filter((s) => s?.rating >= rating);
-
-  }
+  // function extractReviews(){
+  //   let revProds = product?.reviews?.filter((s) => s?.rating >= rating)
+  //   setfilReviews(revProds)
+  //   console.log(revProds)
+  // }
   // this function copies the product Id
   function copies() {
     let copy = document.getElementById("prodId").innerHTML;
@@ -127,8 +128,7 @@ function cal_rel_prods() {
 // calling the fucntion on the condition of change of the current product.
 useEffect(()=>{
   let hobbit = cal_rel_prods();
-  let getRevs = extractReviews();
-  setfilReviews(getRevs)
+  //  extractReviews();
   setHobbit(hobbit)
   },[product])
   var colorSP = product?.colors?.split(",");
@@ -306,7 +306,7 @@ useEffect(()=>{
             <Slider
               value={rating}
               onChange={(e, newRating) => {
-                setRating(newRating);
+                setRating(newRating) 
               }}
               aria-labelledby="continous-slider"
               valueLabelDisplay="auto"
@@ -323,8 +323,8 @@ useEffect(()=>{
       )}
       {product?.reviews && product?.reviews[0] ? (
         <div className="reviews">
-          {filReviews &&
-            filReviews.map((review) => (
+          {product?.reviews &&
+            (product?.reviews?.filter((s) => s?.rating >= rating)).map((review) => (
               <ReviewCard key={review.name} review={review} />
             ))}
         </div>

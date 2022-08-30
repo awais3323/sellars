@@ -1,0 +1,36 @@
+:root {
+	--customColor: #24262b;
+    --customColor_two:white;
+ }
+.pro-sidebar {
+  /* background-color: var(--customColor) !important; */
+  color: var(--customColor_two) !important;
+}
+.pro-icon-wrapper {
+  /* background-color: rgba(128, 128, 128, 0.105) !important; */
+}
+.pro-menu-item,
+.pro-sub-menu .open {
+  /* background-color: var(--customColor); */
+  /* border-right: 2px solid rgba(255, 166, 0, 0.304); */
+  color: var(--customColor_two) !important;
+}
+.pro-sidebar-inner {
+  background-color: var(--customColor) !important;
+}
+.react-slidedown,
+.pro-inner-list-item {
+  background-color: var(--customColor) !important;
+}
+.pro-item-content {
+  color: var(--customColor_two);
+}
+.pro-icon {
+  color: orange;
+}
+.pro-sidebar-layout {
+  background-color: var(--customColor) !important;
+}
+.popper-inner {
+  background-color: var(--customColor) !important;
+}

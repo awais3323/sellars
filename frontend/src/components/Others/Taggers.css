@@ -6,6 +6,7 @@
     border-radius: 10px;
     padding: 0.3vmax;
     margin: 0.81vmax 0.6vmax;
+    cursor:pointer;
 }
 @media screen and (max-width: 1200px) {
     .tags{

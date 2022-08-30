@@ -22,12 +22,31 @@
     /* background-color: rgb(231, 231, 231); */
     padding: 1vmax;
 }
+.or{
+  font: 300 0.7vmax "poppins" !important;
+margin: 0.4vmax;
+font-weight: 900;
+}
+  .GoogleLogin_Button{
+    width: 50%;
+    border: 1px solid var(--orange) !important;
+    box-shadow: none !important;
+    padding: 0.6vmax !important;
+    font: 300 0.7vmax "poppins" !important;
+    border-radius: 10px !important;
+    justify-content: center !important;
+    transition: all 0.5s !important;
 
-  
+  }
+  .GoogleLogin_Button:hover{
+    color: var(--orange) !important;
+    transition: all 0.5s !important;
+
+  }
   .LoginSignUpBox {
       background-color: white;
       width: 55vw;
-      height: 70vh;
+      height: 85vh;
     box-sizing: border-box;
     overflow: hidden;
     padding: 10px;
@@ -171,7 +190,7 @@
     padding: 0.8vmax;
     cursor: pointer;
     transition: all 0.5s;
-    border-radius: 4px;
+    border-radius: 10px;
     outline: none;
     color: white;
     margin: 10px;
@@ -181,6 +200,8 @@
   .loginBtn:hover,
   .signUpBtn:hover {
     background-color: rgb(179, 66, 46);
+    transition: all 0.5s;
+
   }
   
   .shiftToLeft {
@@ -259,5 +280,10 @@
       width: 100%;
       font: 300 1.9vmax "Roboto";
       padding: 1.8vmax;
+    }
+    .GoogleLogin_Button{
+      width: 100%;
+      font: 300 1.9vmax "poppins" !important;
+      padding: 1.0vmax !important;
     }
   }
