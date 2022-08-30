@@ -12,6 +12,8 @@ const {
   getOneUsers,
   updateRole,
   deleteRole,
+  addStrike,
+  deleteStrike
 } = require("../controllers/userController");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 
@@ -28,6 +30,12 @@ router.route("/me/update").put(isAuthenticatedUser, updateProfile);
 router
   .route("/admin/users")
   .get(isAuthenticatedUser, authorizeRoles("admin_one"), getAllUsers);
+router
+  .route("/admin/strike")
+  .post(isAuthenticatedUser, authorizeRoles("admin_one"), addStrike);
+router
+  .route("/admin/deletestrike")
+  .delete(isAuthenticatedUser, authorizeRoles("admin_one"), deleteStrike);
 router
   .route("/admin/users/:id")
   .get(isAuthenticatedUser, authorizeRoles("admin_one"), getOneUsers)

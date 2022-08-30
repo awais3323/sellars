@@ -268,3 +268,70 @@ exports.deleteRole = catchAsyncErrors( async (req, res, next) => {
     success: true,
   });
 });
+
+exports.addStrike =catchAsyncErrors(async(req,res,next)=>{
+  const { subject, Description, userId } = req.body;
+
+  if(req.user.role !== "admin_one"){
+    return next(new Errorhandler("You are not allowed for this action", 400));
+  }
+  
+  if (!subject || !Description) {
+    return next(new Errorhandler("Please Enter Both Email and Password", 400));
+  }
+  const user = await User.findById(userId);
+  if (!user) {
+    return next(new Errorhandler("Invalid user", 401));
+  }
+  if(user.role === "admin_one"){
+    return next(new Errorhandler("Admin_one cannot have strikes", 400));
+  }
+  const strike ={
+    subject,
+    Description
+  }
+
+  user.strikes.push(strike);
+  await user.save({ validateBeforeSave: false });
+
+
+  res.status(200).json({
+    success: true,
+  });
+
+})
+exports.deleteStrike =catchAsyncErrors(async(req,res,next)=>{
+  const { strikeId, userId } = req.body;
+
+  if(req.user.role !== "admin_one"){
+    return next(new Errorhandler("You are not allowed for this action", 400));
+  }
+if (!strikeId || !userId) {
+    return next(new Errorhandler("Please Enter Both Email and Password", 400));
+  }
+  const user = await User.findById(userId);
+  if (!user) {
+    return next(new Errorhandler("Invalid User", 401));
+  }
+
+  if(user.strikes.length ===0 || user.strikes.length ===0){
+    return next(new Errorhandler(`${user.name} has no strike on his account`, 400));
+  }
+
+  const strikes = user.strikes.filter((s)=>s._id.toString() !== strikeId.toString());
+
+  await User.findByIdAndUpdate(
+    userId,
+    {
+      strikes
+    },
+    {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    }
+  );
+  res.status(200).json({
+    success: true,
+  });
+})

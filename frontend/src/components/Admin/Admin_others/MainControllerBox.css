@@ -4,18 +4,31 @@
 	--customColorcon: RGB(245, 249, 252);
     --customColorcon_two:white;
     --customColorcon_font:white;
- }
+    --customColorcon_boxshd:rgba(166,155,155,0.55);
+    --customColorcon_orange:#ff8c32;
+
+}
 
  /* --------------------------------------------------------------------------------------------------- main boxes start */
  .bx{
-    /* box-shadow: 1px 5px 5px -2px rgba(166,155,155,0.55);
-    -webkit-box-shadow: 1px 5px 5px -2px rgba(166,155,155,0.55);
-    -moz-box-shadow: 1px 5px 5px -2px rgba(166,155,155,0.55); */
+    box-shadow: 1px 5px 5px -2px var(--customColorcon_boxshd);
+    -webkit-box-shadow: 1px 5px 5px -2px var(--customColorcon_boxshd);
+    -moz-box-shadow: 1px 5px 5px -2px var(--customColorcon_boxshd);
 
  }
  .evheadBox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     padding: 0.6vmax;
     border-radius: 20px;
+    /* background-color: greenyellow; */
+}
+.Linkings{
+    text-decoration: none;
+    color: var(--customColorcon_orange);
+
 }
 .contentBox{
     width: 97%;
@@ -60,7 +73,7 @@
 }
 
 .inConBox1_2{
-    width: 37%;
+    width: 40%;
     height: 100%;
     border-radius:20px ;
     background-color: var(--customColorcon_two);
@@ -77,9 +90,12 @@
 }
 .smbxs{
     background-color:var(--customColorcon_two);
-    width: 23%;
+    /* border: 2px solid red; */
+    width: 24%;
     height: 100%;
     border-radius: 20px;    
+    align-items: center;
+    text-align: center;
 }
 .longBox1{
     background-color:transparent;
@@ -94,6 +110,39 @@
     height: 100%;
     width: 100%;
     border-radius: 20px;
+}
+.insmallbox1_2{
+    padding: 0.6vmax;
+    font-size: 0.81vmax;
+
+}
+.insmallbox2_2{
+    padding: 0.6vmax;
+    font-size: 0.81vmax;
+}
+.insmallbox3_2{
+    padding: 0.6vmax;
+    font-size: 0.81vmax;
+}
+.insmallbox4_2{
+    padding: 1.6vmax;
+    font-size: 4vmax;
+    font-weight: bolder;
+    color: white !important;
+    
+}
+.smallBoxes_4{
+    background: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+
+}
+.insmallbox1_2 p{
+    color: var(--customColorcon_orange);
+}
+.colorch{
+    color: var(--customColorcon_font);
+}
+.coloror{
+    color: var(--customColorcon_orange);
 }
 @media screen and (max-width: 600px) {
 .conBox1{
@@ -115,16 +164,32 @@
 
 }
 .smbxs{
-    width: 100%;
+    width: 90%;
     margin-bottom: 0.4vmax;
 
 }
 .evheadBox h4{
+    padding: 0.8vmax;
     font-size: 1.5vmax;
 }
 .inConBox0_1 h3{
    
     font-size: 2vmax;
+}
+.insmallbox1_2{
+    padding: 1vmax;
+    font-size: 1.5vmax;
+}
+.insmallbox2_2{
+    padding: 1vmax;
+    font-size: 1.5vmax;
+}
+.insmallbox3_2{
+    padding: 1vmax;
+    font-size: 1.5vmax;
+}
+.Linkings{
+    font-size: 1.2vmax;    
 }
 }
  /* --------------------------------------------------------------------------------------------------- main boxes start */

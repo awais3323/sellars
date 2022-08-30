@@ -18,6 +18,8 @@ import Loader from "../layout/Loader/Loader";
 import { barContext } from "../../App";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 import { gapi } from "gapi-script";
 
 const LoginSignUp = () => {
@@ -36,8 +38,8 @@ const LoginSignUp = () => {
   const registerTab = useRef(null);
   const switcherTab = useRef(null);
 
-  const [loginEmail, setLoginEmail] = useState(" ");
-  const [loginPassword, setLoginPassword] = useState(" ");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -48,6 +50,7 @@ const LoginSignUp = () => {
 
   const [avatar, setAvatar] = useState(profilePng);
   const [avatarPreview, setAvatarPreview] = useState(profilePng);
+  const [type, settype] = useState(false);
 
   const loginSubmit = (e) => {
     e.preventDefault();
@@ -216,12 +219,18 @@ const LoginSignUp = () => {
                 <div className="loginPassword">
                   <LockOpenIcon />
                   <input
-                    type="password"
+                    type={type?"text":"password"}
                     placeholder="Password"
                     required
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
-                  />
+                    />
+                    {
+                      type?
+                      <FaEyeSlash onClick={()=> settype(!type)}/>
+                      :
+                      <FaEye onClick={()=> settype(!type)}/>
+                    }
                 </div>
                 <Link
                   to="/password/forgot"
@@ -293,13 +302,14 @@ const LoginSignUp = () => {
                 <div className="signUpPassword">
                   <LockOpenIcon />
                   <input
-                    type="password"
+                    type={type?"text":"password"}
                     placeholder="Password"
                     required
                     name="password"
                     value={password}
                     onChange={registerDataChange}
                   />
+                    <FaEye onClick={()=>settype(!type)}/>
                 </div>
 
                 <input

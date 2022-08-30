@@ -102,9 +102,13 @@ font-weight: 900;
   .loginForm > div,
   .signUpForm > div {
     display: flex;
+    flex-direction: row;
     width: 100%;
     align-items: center;
+    justify-content: space-between;
+    /* background-color: red; */
   }
+
   .loginForm > div > input,
   .signUpForm > div > input {
     padding: 2vmax 4vmax;
@@ -129,7 +133,7 @@ font-weight: 900;
   
   .loginForm > div > svg,
   .signUpForm > div > svg {
-    position: absolute;
+    /* position: absolute; */
     transform: translateX(1vmax);
     font-size: 1.6vmax;
     color: var(--customColor);
