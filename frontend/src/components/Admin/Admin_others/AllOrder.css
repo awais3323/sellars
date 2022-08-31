@@ -1,0 +1,17 @@
+.statusLine2{
+    width: 15%;     
+    position: relative;
+    height: 0.1vmax;
+}
+.statusLine2::before{
+    content: "";
+    height: 0.1vmax;
+    background-color: #666666ae;
+    right: 0;
+    position: absolute;
+    width: 0%;
+    /* width: var(--count); */
+}
+.fullDivSize{
+    width: 97%;
+}

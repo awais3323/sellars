@@ -16,17 +16,25 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     orderStatus,
   } = req.body;
 
+  let id= orderItems[0].productId;
+  let quan = Number(orderItems[0].quantity);
+  let product = await Product.findById(id);
+
+  let item_pricing  = product.price - (product.price*(product.sales/1000));
+  // console.log(typeof(item_pricing))
+
   const order = await Order.create({
     shippingInfo,
     orderItems,
     paymentInfo,
-    itemsPrice,
+    itemsPrice : Number(item_pricing),
     taxPrice,
     shippingPrice,
-    totalPrice: itemsPrice + taxPrice + shippingPrice,
+    totalPrice: (Number(item_pricing) + taxPrice + shippingPrice)*quan,
     orderStatus,
     paidAt: Date.now(),
     user: req.user._id,
+    seller:product.user,
   });
   res.status(201).json({
     success: true,
@@ -62,6 +70,21 @@ exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
     order,
   });
 });
+
+//Get all orders of a specific sellers
+
+exports.getAllSellerOrder = catchAsyncErrors(async (req, res, next) => {
+  const order = await Order.find({ seller: req.user._id });
+  const totord = await Order.find()
+  let totalOrders = totord.length;
+  res.status(200).json({
+    success: true,
+    order,
+    totalOrders,
+  });
+});
+
+
 // Get All orders == User
 exports.getAllOrdersUsers = catchAsyncErrors(async (req, res, next) => {
   const order = await Order.find({ user: req.user._id });

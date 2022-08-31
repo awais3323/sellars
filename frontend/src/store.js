@@ -13,6 +13,7 @@ import {
 } from "./reducers/userReducer";
 import { darkModeSetter, topLoadingBarReducer,productCat } from "./reducers/otherReducer";
 import { cartReducer } from "./reducers/cartReducer";
+import { orderReducer } from "./reducers/orderReducer";
 
 
 const reducer = combineReducers({
@@ -25,7 +26,8 @@ const reducer = combineReducers({
   forgotPassword: forgotPasswordReducer,
   toploader: topLoadingBarReducer,
   cart: cartReducer,
-  prods:productCat
+  prods:productCat,
+  orders:orderReducer
 });
 
 let initialState = {

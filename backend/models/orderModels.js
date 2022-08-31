@@ -26,6 +26,9 @@ const orderSchema = new mongoose.Schema({
       type: Number,
       required: [true, "Please insert your Phone No #"],
     },
+    phoneNo2: {
+      type: Number,
+    },
   },
   orderItems: [
     {
@@ -44,6 +47,12 @@ const orderSchema = new mongoose.Schema({
       image: {
         type: String,
         required: true,
+      },
+      color:{
+        type:String,
+      },
+      size:{
+        type:String,
       },
       productId: {
         type: mongoose.Schema.ObjectId,
@@ -93,12 +102,17 @@ const orderSchema = new mongoose.Schema({
   },
   orderStatus: {
     type: String,
-    required: true,
+    // required: true,
+    default:"pending"
   },
   deliveredAt: Date,
   createdAt: {
     type: Date,
     default: Date.now,
   },
+  seller:{
+    type:String,
+    required: [true, "Please enter the seller id who is selling this product"],
+  }
 });
 module.exports = mongoose.model("Order", orderSchema);
