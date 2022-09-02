@@ -22,6 +22,7 @@ export const orderReducer = (state = { ordersSells: [] }, action) => {
         //   loading: false,
           orders: action.payload.order,
           totalOrders: action.payload.totalOrders,
+          OrderDates: action.payload.real_ordDatArr,
         };
   
       case ALL_ORDER_FAIL:

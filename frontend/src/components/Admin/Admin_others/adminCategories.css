@@ -1,0 +1,20 @@
+.ProdsCats{
+    background: var(--customColorcon);
+    padding: 1vmax;
+    border: 10px;
+    height: 3vmax;
+    width: 7vmax;
+    text-align: center;
+    margin: 0.4vmax;
+    border-radius: 1.7vmax;
+    cursor: pointer;
+    font-size: 0.71vmax;
+}
+@media screen and (max-width: 650px) {
+    .ProdsCats{
+        padding: 1vmax;
+        border: 10px;
+        height: 5vmax;
+        width: 15vmax;
+    }
+}

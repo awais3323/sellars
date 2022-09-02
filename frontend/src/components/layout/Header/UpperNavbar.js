@@ -41,7 +41,7 @@ const UpperNavbar = () => {
   // console.log(user?.role);
   function dashboard() {
     topload()
-    navigate("/admin/dashboard");
+    navigate("/admin/dashboard/myDetails");
   }
   function cart() {
     topload()

@@ -16,10 +16,17 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     orderStatus,
   } = req.body;
 
+
+
   let id= orderItems[0].productId;
   let quan = Number(orderItems[0].quantity);
   let product = await Product.findById(id);
 
+  if(JSON.stringify(product.user) === JSON.stringify(req.user._id)){
+    return next(
+      new Errorhandler(`You cannot order your own product`, 404)
+    );
+  }
   let item_pricing  = product.price - (product.price*(product.sales/1000));
   // console.log(typeof(item_pricing))
 
@@ -36,6 +43,7 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     user: req.user._id,
     seller:product.user,
   });
+
   res.status(201).json({
     success: true,
     order,
@@ -75,12 +83,28 @@ exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
 
 exports.getAllSellerOrder = catchAsyncErrors(async (req, res, next) => {
   const order = await Order.find({ seller: req.user._id });
+  const orderDates = await Order.find({ seller: req.user._id }).select("createdAt");
+
   const totord = await Order.find()
   let totalOrders = totord.length;
+
+  let ordDatArr = orderDates.map((od)=> od.createdAt)
+
+  let real_ordDatArr=[];
+  ordDatArr.forEach((ele)=>{
+
+     let ele_s = JSON.stringify(ele).split("-");
+     let temp_date = `${ele_s[2].slice(0, 2)} - ${ele_s[1]} - ${ele_s[0]}`
+     real_ordDatArr.push(temp_date.split("-"))
+  })
+
+  // console.log(real_ordDatArr)
+
   res.status(200).json({
     success: true,
     order,
     totalOrders,
+    real_ordDatArr,
   });
 });
 

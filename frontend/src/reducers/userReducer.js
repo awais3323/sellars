@@ -24,6 +24,12 @@ import {
   RESET_UPDATE_REQUEST,
   RESET_UPDATE_SUCCESS,
   RESET_UPDATE_FAIL,
+  ALL_USER_DATE_REQUEST,
+  ALL_USER_DATE_SUCCESS,
+  ALL_USER_DATE_FAIL,
+  SELLER_USER_DATE_REQUEST,
+  SELLER_USER_DATE_SUCCESS,
+  SELLER_USER_DATE_FAIL,
   CLEAR_ERRORS,
 } from "../constants/userConstant";
 
@@ -120,6 +126,61 @@ export const profileupdaterReducer= (state = {}, action) => {
   }
   
 };
+export const SellerUsersDates  = (state = { SEUSDAT: [] }, action) => {
+  switch (action.type) {
+    case SELLER_USER_DATE_REQUEST:
+      return {
+        sellProdDates: [],
+      };
+
+    case SELLER_USER_DATE_SUCCESS:
+      return {
+        sellProdDates: action.payload.real_UserSellerDatArr,
+        sellusers: action.payload.usersSeller,
+      };
+
+    case SELLER_USER_DATE_FAIL:
+      return {
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+
+    default:
+      return state;
+  }
+};
+export const AllUsersDates  = (state = { ALUSDAT: [] }, action) => {
+  switch (action.type) {
+    case ALL_USER_DATE_REQUEST:
+      return {
+        sellProdDates: [],
+      };
+
+    case ALL_USER_DATE_SUCCESS:
+      return {
+        sellProdDates: action.payload.real_UserAllrDatArr,
+        Allusers: action.payload.Allusers,
+      };
+
+    case ALL_USER_DATE_FAIL:
+      return {
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+
+    default:
+      return state;
+  }
+};
+
 
 export const forgotPasswordReducer= (state = {}, action) => {
   switch (action.type) {
@@ -153,5 +214,4 @@ export const forgotPasswordReducer= (state = {}, action) => {
     default:
       return state;
   }
-  
 };

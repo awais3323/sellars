@@ -12,6 +12,8 @@ const {
   getOneUsers,
   updateRole,
   deleteRole,
+  getAllUsersDates,
+  getSellerUsersDates,
   addStrike,
   deleteStrike
 } = require("../controllers/userController");
@@ -30,6 +32,12 @@ router.route("/me/update").put(isAuthenticatedUser, updateProfile);
 router
   .route("/admin/users")
   .get(isAuthenticatedUser, authorizeRoles("admin_one"), getAllUsers);
+router
+  .route("/admin/usersDates")
+  .get(isAuthenticatedUser, authorizeRoles("admin_one"), getAllUsersDates);
+router
+  .route("/admin/sellerUsersDates")
+  .get(isAuthenticatedUser, authorizeRoles("admin_one","admin"), getSellerUsersDates);
 router
   .route("/admin/strike")
   .post(isAuthenticatedUser, authorizeRoles("admin_one"), addStrike);

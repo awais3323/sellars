@@ -5,11 +5,14 @@ import {
   CategoriesProdReducer,
   productDetailsReducer,
   productReducer,
+  sellerProductDates,
 } from "./reducers/productReducer";
 import {
   useReducer,
   profileupdaterReducer,
   forgotPasswordReducer,
+  SellerUsersDates,
+  AllUsersDates,
 } from "./reducers/userReducer";
 import { darkModeSetter, topLoadingBarReducer,productCat } from "./reducers/otherReducer";
 import { cartReducer } from "./reducers/cartReducer";
@@ -27,7 +30,10 @@ const reducer = combineReducers({
   toploader: topLoadingBarReducer,
   cart: cartReducer,
   prods:productCat,
-  orders:orderReducer
+  orders:orderReducer,
+  sellprodDates:sellerProductDates,
+  sellUserDates:SellerUsersDates,
+  allUserDates:AllUsersDates
 });
 
 let initialState = {

@@ -215,6 +215,50 @@ exports.getAllUsers = catchAsyncErrors( async (req, res, next) => {
     users,
   });
 });
+exports.getAllUsersDates = catchAsyncErrors( async (req, res, next) => {
+  const AllusersDates = await User.find().select("createdAt");
+  const Allusers = await User.find();
+
+  // console.log(AllusersDates)
+
+  let ordDatArr = AllusersDates.map((od)=> od.createdAt)
+  
+  let real_UserAllrDatArr=[];
+  ordDatArr.forEach((ele)=>{
+    
+    let ele_s = JSON.stringify(ele).split("-");
+    let temp_date = `${ele_s[2].slice(0, 2)} - ${ele_s[1]} - ${ele_s[0]}`
+    real_UserAllrDatArr.push(temp_date.split("-"))
+  })
+  // console.log(real_ordDatArr)
+
+  res.status(200).json({
+    success: true,
+    real_UserAllrDatArr,
+    Allusers
+  });
+});
+exports.getSellerUsersDates = catchAsyncErrors( async (req, res, next) => {
+  const usersDates = await User.find({role:{$ne:"admin_one"}}).select("createdAt");
+  const usersSeller = await User.find({role:{$ne:"admin_one"}});
+
+  let ordDatArr = usersDates.map((od)=> od.createdAt)
+  
+  let real_UserSellerDatArr=[];
+  ordDatArr.forEach((ele)=>{
+    
+    let ele_s = JSON.stringify(ele).split("-");
+    let temp_date = `${ele_s[2].slice(0, 2)} - ${ele_s[1]} - ${ele_s[0]}`
+    real_UserSellerDatArr.push(temp_date.split("-"))
+  })
+  // console.log(real_ordDatArr)
+
+  res.status(200).json({
+    success: true,
+    real_UserSellerDatArr,
+    usersSeller
+  });
+});
 
 // Get Single user (Admin)
 exports.getOneUsers = catchAsyncErrors( async (req, res, next) => {

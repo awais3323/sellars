@@ -23,10 +23,11 @@ const AllOrder = ({orders}) => {
           </p>
           <div className="statusLine2" id="statusLiner2" style={{backgroundColor:`${orders.orderStatus === "pending"? "red" :`${orders.orderStatus === "packed" ?"orange":`${orders.orderStatus === "transfered" ?"#CA82FF":"#3AB4F2"}`}`}` }}></div>
           <p className="pend_para">
-            <span className="no_orange"> {orders.itemsPrice}</span>
+            <span className="no_orange"> user Id :{orders.user}</span>
           </p>
+          
           <p className="pend_para">
-            <span className="no_orange"> {orders.totalPrice}</span>
+            <span className="no_orange"> {orders.totalPrice} Rs.</span>
           </p>
         </div>
       </div>

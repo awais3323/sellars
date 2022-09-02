@@ -32,6 +32,8 @@ import Cart from "./components/cart/Cart";
 import { getProduct } from "./actions/productAction";
 import Dashboard from "./components/Admin/Dashboard";
 import Notallowed from "./components/Others/Notallowed";
+import Admin_product_page from "./components/Admin/Admin_product_page";
+import Admin_user_page from "./components/Admin/Admin_user_page";
 // import { useAlert } from "react-alert";
 
 export const barContext = createContext();
@@ -111,8 +113,18 @@ const App = React.memo(() => {
           <Routes>
             <Route
               exact
-              path="/admin/dashboard"
-              element={user?.role === "admin" || user?.role === "admin_one"?  <Dashboard isauth = {isAuthenticated}/>:<Notallowed /> }
+              path="/admin/dashboard/myDetails"
+              element={user?.role === "admin" || user?.role === "admin_one"?  <Dashboard/>:<Notallowed /> }
+            />
+            <Route
+              exact
+              path="/admin/dashboard/products"
+              element={user?.role === "admin" || user?.role === "admin_one"?  <Admin_product_page/>:<Notallowed /> }
+            />
+            <Route
+              exact
+              path="/admin/dashboard/Users"
+              element={user?.role === "admin" || user?.role === "admin_one"?  <Admin_user_page/>:<Notallowed /> }
             />
             <Route exact index path="/" element={<Home />} />
             <Route exact path="/products/:id" element={<ProductDetails />} />

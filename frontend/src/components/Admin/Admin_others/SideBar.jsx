@@ -15,13 +15,19 @@ import {
   FaGem,
   FaMoon,
   FaSun,
-  FaHeart,
   FaArrowRight,
   FaArrowLeft,
   FaUserCheck,
 } from "react-icons/fa";
 import "./sideBar.css";
+import { BsFillCartCheckFill } from "react-icons/bs";
+import { BsBasketFill } from "react-icons/bs";
+import { BsFillPersonCheckFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
+
+
 const SideBar = React.memo(() => {
+
   const dispatch = useDispatch();
   const topload = useContext(barContext);
 
@@ -63,6 +69,7 @@ const SideBar = React.memo(() => {
         <SidebarHeader>
           <Menu iconShape="circle">
             <MenuItem
+            id="firsst one"
               onClick={() => setOpen(!open)}
               icon={open ? <FaArrowRight /> : <FaArrowLeft />}
             >
@@ -72,10 +79,17 @@ const SideBar = React.memo(() => {
           </Menu>
         </SidebarHeader>
         <Menu iconShape="circle">
-          <MenuItem icon={<FaGem />}>My Details</MenuItem>
-          <SubMenu title="Products" icon={<FaHeart />}>
-            <MenuItem>Component 1</MenuItem>
-            <MenuItem>Component 2</MenuItem>
+          <SubMenu title="Products" icon={<BsBasketFill />}>
+            <MenuItem><Link to={"/admin/dashboard/products"} onClick={()=>topload()} >Make and Edit Products</Link></MenuItem>
+            <MenuItem>Search Products</MenuItem>
+          </SubMenu>
+          <SubMenu title="Orders" icon={<BsFillCartCheckFill />}>
+            <MenuItem> <Link to={"/admin/dashboard/myDetails"} onClick={()=>topload()}>My Orders</Link> </MenuItem>
+            <MenuItem>Search Orders</MenuItem>
+          </SubMenu>
+          <SubMenu title="Users" icon={<BsFillPersonCheckFill />}>
+            <MenuItem> <Link to={"/admin/dashboard/Users"} onClick={()=>topload()}>All Users</Link></MenuItem>
+            <MenuItem>Serach Users</MenuItem>
           </SubMenu>
         </Menu>
         <SidebarFooter>

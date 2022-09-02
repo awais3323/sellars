@@ -5,7 +5,6 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
 // Create Product --- Admin
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
-  req.body.user = req.user.id;
   const product = await Product.create(req.body);
   res.status(201).json({ success: true, product });
 });
@@ -13,6 +12,7 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 // Get all products
 exports.getAllProucts = catchAsyncErrors(async (req, res, next) => {
   // return next(new Errorhandler("this is my temp error", 500));
+
   const resultPerPage = 100;
   const productsCount = await Product.countDocuments();
   const apiFeature = new ApiFeatures(Product.find(), req.query)
@@ -31,15 +31,37 @@ exports.getAllProucts = catchAsyncErrors(async (req, res, next) => {
 
   apiFeature.pagination(resultPerPage);
 
-  // console.log(products)
+
+
   res.status(200).json({
     success: true,
     products,
     productsCount,
     resultPerPage,
+    // real_prodDatArr,
     filteredProductsCount,
   });
 });
+exports.getSellerProuctsDates = catchAsyncErrors(async (req, res, next) => {
+  const  productDate = await Product.find({ user: req.user._id }).select("createdAt");
+
+  let ordDatArr = productDate.map((od)=> od.createdAt)
+  
+  let real_ordDatArr=[];
+  ordDatArr.forEach((ele)=>{
+    
+    let ele_s = JSON.stringify(ele).split("-");
+    let temp_date = `${ele_s[2].slice(0, 2)} - ${ele_s[1]} - ${ele_s[0]}`
+    real_ordDatArr.push(temp_date.split("-"))
+  })
+  // console.log(real_ordDatArr)
+
+  res.status(200).json({
+    success: true,
+    real_ordDatArr
+  });
+});
+
 exports.getAllProuctsAccCats = catchAsyncErrors(async (req, res, next) => {
   // return next(new Errorhandler("this is my temp error", 500));
   const resultPerPage = 100;

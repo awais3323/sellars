@@ -9,7 +9,7 @@ import {
   CLEAR_ERRORS,
 } from "../constants/orderConstants";
 
-export const getAllOrders =() =>
+export const getSellerOrders =() =>
   async (dispatch) => {
     try {
       dispatch({

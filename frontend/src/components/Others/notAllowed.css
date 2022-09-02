@@ -11,3 +11,18 @@
     font-size: 1.0vmax;
 }
 
+.directingBtn{
+    background-color: var(--customColorcon_orange);
+    padding: 1vmax;
+    color: white;
+    text-decoration: none;
+    border-radius:20px ;
+    transition: all 0.3s ease-in-out;
+}
+.directingBtn:hover{
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+
+    border: 2px solid var(--customColorcon_orange);
+    color: var(--customColorcon_orange);
+}

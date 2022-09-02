@@ -10,6 +10,9 @@ import {
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
   CLEAR_ERRORS,
+  ALL_SELLER_DATES_FAIL,
+  ALL_SELLER_DATES_SUCCESS,
+  ALL_SELLER_DATES_REQUEST,
 } from "../constants/productConstant";
 
 export const getProduct =
@@ -30,6 +33,29 @@ export const getProduct =
     } catch (error) {
       dispatch({
         type: ALL_PRODUCT_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
+
+export const getSellerDates =
+  () =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: ALL_SELLER_DATES_REQUEST,
+      });
+      let link = `/api/v1/products/getSellerDates`;
+
+      const { data } = await axios.get(link);
+
+      dispatch({
+        type: ALL_SELLER_DATES_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: ALL_SELLER_DATES_FAIL,
         payload: error.response.data.message,
       });
     }

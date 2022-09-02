@@ -23,8 +23,12 @@
     justify-content: space-between;
     padding: 0.6vmax;
     border-radius: 20px;
+    width: 95%;
+    margin: auto;
+    color: var(--customColorcon_font);
     /* background-color: greenyellow; */
 }
+
 .evheadBoxsmall{
     width: 80%;
     margin: auto;
@@ -45,7 +49,7 @@
 .contentBox{
     width: 97%;
     float: right;
-    height: 143vh;
+    height: 113vh;
     color: var(--customColorcon_font);
     background-color: var(--customColorcon);
     /* background-color: green ; */
@@ -77,7 +81,7 @@
     
 }
 .inConBox1_1{
-    width: 57%;
+    width: 58%;
     height: 100%;
     border-radius:20px ;
     background-color: var(--customColorcon_two);
@@ -98,6 +102,19 @@
     /* background-color: pink; */
     pointer-events: auto;
     overflow-y: scroll;
+}
+.inConBox1_2_2::-webkit-scrollbar {
+    width: 7px;
+    /* background-color: red; */
+}
+
+.inConBox1_2_2::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.inConBox1_2_2::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color:var(--customColorcon_orange);
 }
 
 .smallBoxes{
@@ -132,7 +149,20 @@
     height: 42vh;
     width: 100%;
     border-radius: 20px;
-    overflow: scroll;
+    overflow-y: scroll;
+}
+.inLongBox1_1_2::-webkit-scrollbar {
+    width: 7px;
+    /* background-color: red; */
+}
+
+.inLongBox1_1_2::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.inLongBox1_1_2::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color:var(--customColorcon_orange);
 }
 .insmallbox1_2{
     padding: 0.6vmax;
@@ -173,7 +203,7 @@
 .Line{
     margin: auto;
     width: 90% !important;
-    height: 52vh !important;
+    height: 50vh !important;
 }
 
 @media screen and (max-width: 950px) {
@@ -182,12 +212,12 @@
     height: 140vh;
 }
 .inConBox1_1{
-    width: 90%;
+    width: 100%;
     margin-bottom: 0.4vmax;
 
 }
 .inConBox1_2{
-    width: 90%;
+    width: 100%;
 }
 .smallBoxes{
     flex-direction:column;
@@ -196,13 +226,27 @@
 
 }
 .smbxs{
-    width: 90%;
+    width: 100%;
     margin-bottom: 0.4vmax;
 
 }
 .evheadBox h4{
     padding: 0.8vmax;
     font-size: 1.5vmax;
+}
+.conBox0{
+    /* background-color: red; */
+    height: 12vh;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.inConBox0_1{
+    width: 100%;
+    padding: 1.5vmax;
+    margin-top: 1vmax;
+}
+.inConBox1_1{
+    width: 100%;
 }
 .inConBox0_1 h3{
    
@@ -227,6 +271,7 @@
     width: 100%;
     font-size: 2vmax;
 }
+
 }
 
  /* --------------------------------------------------------------------------------------------------- main boxes start */

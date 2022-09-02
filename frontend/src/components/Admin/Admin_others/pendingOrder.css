@@ -34,7 +34,7 @@
     color: var(--customColorcon_font) !important;
 }
 .statusLine{
-    width: 45%;     
+    width: 43%;     
     position: relative;
     height: 0.1vmax;
 }

@@ -24,6 +24,12 @@ import {
   RESET_UPDATE_REQUEST,
   RESET_UPDATE_SUCCESS,
   RESET_UPDATE_FAIL,
+  ALL_USER_DATE_REQUEST,
+  ALL_USER_DATE_SUCCESS,
+  ALL_USER_DATE_FAIL,
+  SELLER_USER_DATE_REQUEST,
+  SELLER_USER_DATE_SUCCESS,
+  SELLER_USER_DATE_FAIL,
   CLEAR_ERRORS,
 } from "../constants/userConstant";
 
@@ -163,6 +169,53 @@ export const resetPassword = (token,password) => async (dispatch) => {
     dispatch({ type: RESET_UPDATE_FAIL, payload: error.response.data.message });
   }
 };
+
+// getting users dates that are only be called by the admin_one
+export const getAllUsersDates =
+  () =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: ALL_USER_DATE_REQUEST,
+      });
+      let link = `/api/v1/admin/usersDates`;
+
+      const { data } = await axios.get(link);
+      console.log(data)
+      dispatch({
+        type: ALL_USER_DATE_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: ALL_USER_DATE_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
+
+export const getSellerUsersDates =
+  () =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: SELLER_USER_DATE_REQUEST,
+      });
+      let link = `/api/v1/admin/sellerUsersDates`;
+
+      const { data } = await axios.get(link);
+
+      dispatch({
+        type: SELLER_USER_DATE_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: SELLER_USER_DATE_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 
 //Clear Errors
