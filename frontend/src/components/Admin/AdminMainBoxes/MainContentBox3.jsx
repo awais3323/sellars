@@ -1,11 +1,11 @@
 import React , { useEffect,useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllUsersDates, getSellerUsersDates } from '../../../actions/userAction'
-import SmallBoxes_ad from './Admin_Mainthings/SmallBoxes_ad'
+import {  getSellerUsersDates } from '../../../actions/userAction'
+import SmallBoxes_ad from '../Admin_others/Admin_Mainthings/SmallBoxes_ad'
 import { VscRefresh } from "react-icons/vsc";
-import Graphs from './Admin_Mainthings/Graphs';
-import RecentUsers from './RecentUsers';
-import AllUsers from './AllUsers';
+import Graphs from '../Admin_others/Admin_Mainthings/Graphs';
+import RecentUsers from '../Admin_others/RecentUsers';
+import AllUsers from '../Admin_others/AllUsers';
 
 
 
@@ -25,7 +25,7 @@ const dispatch =  useDispatch();
 
   useEffect(() => {
   dispatch(getSellerUsersDates())
-  }, [dispatch,getSellerUsersDates])
+  }, [dispatch])
   
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const dispatch =  useDispatch();
 
 function recent_users(){
   if (sellusers&& sellusers.length > 12){
-    setrecentUsers(sellusers.length==5)
+    setrecentUsers(sellusers.length===5)
   }
   else{
     setrecentUsers(sellusers)

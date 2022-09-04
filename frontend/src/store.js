@@ -16,7 +16,7 @@ import {
 } from "./reducers/userReducer";
 import { darkModeSetter, topLoadingBarReducer,productCat } from "./reducers/otherReducer";
 import { cartReducer } from "./reducers/cartReducer";
-import { orderReducer } from "./reducers/orderReducer";
+import { allorderReducer, sellerorderReducer } from "./reducers/orderReducer";
 
 
 const reducer = combineReducers({
@@ -30,7 +30,8 @@ const reducer = combineReducers({
   toploader: topLoadingBarReducer,
   cart: cartReducer,
   prods:productCat,
-  orders:orderReducer,
+  orders:sellerorderReducer,
+  ordersAll:allorderReducer,
   sellprodDates:sellerProductDates,
   sellUserDates:SellerUsersDates,
   allUserDates:AllUsersDates

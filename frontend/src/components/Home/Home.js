@@ -14,6 +14,7 @@ import { useAlert } from "react-alert";
 const Home = (props) => {
   const alert = useAlert();
   const dispatch = useDispatch();
+  const [filProd, setfilProd] = useState("")
   const { loading, error, products, productsCount } = useSelector(
     (state) => state.products
   );
@@ -31,11 +32,22 @@ const Home = (props) => {
     AOS.init();
     AOS.refresh();
   }, []);
+
+  
+  useEffect(() => {
+    prdoucts_Uniqueing()
+  }, [products]);
+
+function prdoucts_Uniqueing(){
+
   const keys = "name";
-  let filProd = [
+  let extracting = [
     ...new Map(products.map((item) => [item[keys], item])).values(),
   ];
+  setfilProd(extracting)
+}
   window.addEventListener("load", props.changingState);
+
 
   return (
     <>

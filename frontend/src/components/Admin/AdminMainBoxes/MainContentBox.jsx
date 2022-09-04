@@ -1,16 +1,13 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { productDetailsReducer } from "../../../reducers/productReducer";
 import "./MainControllerBox.css";
-import { Line } from "react-chartjs-2";
-import { Chart } from "chart.js/auto";
 import { getSellerOrders } from "../../../actions/orderActions";
-import PendingOrder from "./pendingOrder";
-import AllOrder from "./AllOrder";
+import PendingOrder from "../Admin_others/pendingOrder";
+import AllOrder from "../Admin_others/AllOrder";
 import { VscRefresh } from "react-icons/vsc";
-import SmallBoxes_ad from "./Admin_Mainthings/SmallBoxes_ad";
-import Graphs from "./Admin_Mainthings/Graphs";
+import SmallBoxes_ad from "../Admin_others/Admin_Mainthings/SmallBoxes_ad";
+import Graphs from "../Admin_others/Admin_Mainthings/Graphs";
 
 
 
@@ -18,9 +15,9 @@ const MainContentBox = React.memo(() => {
   const dispatch = useDispatch();
 
   let { modes } = useSelector((state) => state.DarkMode);
-  const { isAuthenticated, user } = useSelector((state) => state.user);
-  const { products } = useSelector((state) => state.products);
-  const { OrderDates, totalOrders, orders } = useSelector(
+  const {  user } = useSelector((state) => state.user);
+  // const { products } = useSelector((state) => state.products);
+  const { OrderDates, orders } = useSelector(
     (state) => state.orders
   );
 

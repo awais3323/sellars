@@ -1,7 +1,8 @@
 import React from 'react'
 import "./color.css"
-const Colors = ({s,modes}) => {
+const Colors = React.memo((props) => {
     // console.log(props.s)
+    const {s} =props
   return (
     <>
     <div className='colDiv' style={{background:`${s}`, color:`${s}`}}>
@@ -9,6 +10,5 @@ const Colors = ({s,modes}) => {
     </div>
     </>
   )
-}
-
+})
 export default Colors

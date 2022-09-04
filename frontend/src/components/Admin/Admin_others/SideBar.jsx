@@ -12,7 +12,6 @@ import {
 } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import {
-  FaGem,
   FaMoon,
   FaSun,
   FaArrowRight,
@@ -34,7 +33,7 @@ const SideBar = React.memo(() => {
   const [open, setOpen] = useState(true);
 
   let { modes } = useSelector((state) => state.DarkMode);
-  const { isAuthenticated, user } = useSelector((state) => state.user);
+  const {  user } = useSelector((state) => state.user);
 
   const setMode = () => {
     let modeSet;
@@ -80,16 +79,18 @@ const SideBar = React.memo(() => {
         </SidebarHeader>
         <Menu iconShape="circle">
           <SubMenu title="Products" icon={<BsBasketFill />}>
-            <MenuItem><Link to={"/admin/dashboard/products"} onClick={()=>topload()} >Make and Edit Products</Link></MenuItem>
-            <MenuItem>Search Products</MenuItem>
+            <MenuItem><Link to={"/admin/dashboard/products"} onClick={()=>topload()} >My Products</Link></MenuItem>
+            <MenuItem>Make Products</MenuItem>
+            <MenuItem><Link to={"/admin/dashboard/search_Products"} onClick={()=>topload()}>Search Products</Link></MenuItem>
           </SubMenu>
           <SubMenu title="Orders" icon={<BsFillCartCheckFill />}>
             <MenuItem> <Link to={"/admin/dashboard/myDetails"} onClick={()=>topload()}>My Orders</Link> </MenuItem>
-            <MenuItem>Search Orders</MenuItem>
+            <MenuItem><Link to={"/admin/dashboard/search_Orders"} onClick={()=>topload()}>Search Orders</Link></MenuItem>
+            
           </SubMenu>
           <SubMenu title="Users" icon={<BsFillPersonCheckFill />}>
             <MenuItem> <Link to={"/admin/dashboard/Users"} onClick={()=>topload()}>All Users</Link></MenuItem>
-            <MenuItem>Serach Users</MenuItem>
+            <MenuItem><Link to={"/admin/dashboard/search_Users"} onClick={()=>topload()}>Search Users</Link></MenuItem>
           </SubMenu>
         </Menu>
         <SidebarFooter>

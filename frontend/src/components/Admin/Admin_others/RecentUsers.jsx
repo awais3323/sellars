@@ -14,7 +14,7 @@ useEffect(() => {
       root.style.setProperty("--customColorcon", "RGB(245, 249, 252)");
       root.style.setProperty("--customColorcon_font", "#212429");
     }
-  }, [modes]);
+  }, [modes,root.style]);
 
 
   return (
@@ -22,7 +22,7 @@ useEffect(() => {
       <div className="mainPendingDiv">
         <div className="First_pedningDiv">
           <p className="pend_para">
-           Order Name : <span className="no_orange"> {users.name}</span>
+           User Name : <span className="no_orange"> {users.name}</span>
           </p>
           <p className="statusNumber pend_para">
             {" "}
@@ -33,10 +33,10 @@ useEffect(() => {
         </div>
         <div className="Second_pedningDiv">
         <p className="pend_para">
-            <span className="no_orange">Order Role : {users.role}</span>
+            <span className="no_orange">User Role : {users.role}</span>
           </p>
         <p className="pend_para">
-            <span className="no_orange">Order Date : {users.createdAt}</span>
+            <span className="no_orange"> Date : {users.createdAt}</span>
           </p>
           {/* <div className="statusLine" id="statusLiner" style={{backgroundColor:`${orders.orderStatus === "pending"? "red" :`${orders.orderStatus === "packed" ?"orange":"#CA82FF"}`}` }}></div> */}
           

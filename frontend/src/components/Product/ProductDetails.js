@@ -15,14 +15,14 @@ import Product from "../Home/Product";
 import Colors from "../Others/Colors";
 
 
-const ProductDetails = React.memo(({changingState}) => {
+const ProductDetails = React.memo((props) => {
   const alert = useAlert();
   const dispatch = useDispatch();
   const { id } = useParams();
 
-
+const {changingState} = props
   const { products } = useSelector((state) => state.products);
-  const { user } = useSelector((state) => state.user);
+  // const { user } = useSelector((state) => state.user);
   const { modes } = useSelector((state) => state.DarkMode);
 
   const [quantity, setquantity] = useState(1);
@@ -139,7 +139,6 @@ useEffect(()=>{
         className="ProductDetails"
         style={{ backgroundColor: `${modes ? "black" : "white"}` }}
       >
-        {/* <p */}
         {/* style={{ backgroundColor: 'grey'}}    >renders {renders.current++}</p> */}
         
         <div className="longdiv">
@@ -201,12 +200,12 @@ useEffect(()=>{
           <div className="colorsDiv">
             <span >Colors : </span>
             <div className="insiderCol">
-
-                
-                {colorSP && colorSP.map((s)=>(
+                {
+                  colorSP?.length > 0? colorSP && colorSP.map((s)=>(
                   <Colors s={s} modes={modes} key={Math.floor(Math.random()*100)}/>
                   // console.log(s)
-                  ))}
+                  ))
+               :"❌" }
                   </div>
               </div>
           <div className="detailsBlock-2">
@@ -316,7 +315,6 @@ useEffect(()=>{
               max={5}
               className="slider"
             />
-          {/* </fieldset> */}
         </div>
       ) : (
         ""

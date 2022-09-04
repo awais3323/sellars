@@ -2,15 +2,13 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./MainControllerBox2.css";
-import { Line } from "react-chartjs-2";
-import { Chart } from "chart.js/auto";
 import { getSellerDates } from "../../../actions/productAction";
 import { VscRefresh } from "react-icons/vsc";
 import { getProduct } from "../../../actions/productAction";
 import Product from "../../Home/Product";
-import Admin_categories from "./Admin_categories";
-import SmallBoxes_ad from "./Admin_Mainthings/SmallBoxes_ad";
-import Graphs from "./Admin_Mainthings/Graphs";
+import Admin_categories from "../Admin_others/Admin_categories";
+import SmallBoxes_ad from "../Admin_others/Admin_Mainthings/SmallBoxes_ad";
+import Graphs from "../Admin_others/Admin_Mainthings/Graphs";
 
 
 
@@ -21,7 +19,6 @@ const MainContentBox2 = React.memo(() => {
   const { user } = useSelector((state) => state.user);
   const { products } = useSelector((state) => state.products);
   const { sellProdDates } = useSelector((state) => state.sellprodDates);
-  const {  orders } = useSelector((state) => state.orders);
  
 
   const [data_one, setData_one] = useState(null);
@@ -33,11 +30,11 @@ const MainContentBox2 = React.memo(() => {
 
   useEffect(() => {
     dispatch(getSellerDates());
-  }, [dispatch, getSellerDates]);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getProduct());
-  }, [dispatch, getProduct]);
+  }, [dispatch]);
 
   useEffect(() => {
     var root = document.querySelector(":root");
@@ -66,7 +63,7 @@ const MainContentBox2 = React.memo(() => {
   
   useEffect(() => {
     make_All_Order_Date();
-  }, [sellProdDates]);
+  }, [sellProdDates,filter_products,make_All_Product_Categories]);
 
   function filter_products(){
     if(products && user && products.length >0){

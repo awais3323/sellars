@@ -6,11 +6,11 @@ import { useSelector } from "react-redux";
 // import { motion } from "framer-motion";
 import { barContext } from "../../App";
 
-const Product = ({ product}) => {
+const Product = React.memo((props) => {
   const topload = useContext(barContext)
   // console.log(topload);
   const { modes } = useSelector((state) => state.DarkMode);
-
+  const {product} = props
   const options = {
     edit: false,
     color: "grey",
@@ -67,11 +67,11 @@ const Product = ({ product}) => {
             </div>
             <div className="prodReviews py-3">
               <ReactStars {...options} />{" "}
-              <span className="revNum">
+              {/* <span className="revNum">
                 <small style={{ color: `${modes ? "white" : "black"}` }}>
                   ({product.numOfReviews})
                 </small>
-              </span>
+              </span> */}
             </div>
             <div className="PRprice">
               <div className="prf">
@@ -104,7 +104,7 @@ const Product = ({ product}) => {
       {/* <button onClick={changingState}>acha</button> */}
     </>
   );
-};
+});
 
 export default Product;
 

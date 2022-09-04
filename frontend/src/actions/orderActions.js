@@ -13,9 +13,32 @@ export const getSellerOrders =() =>
   async (dispatch) => {
     try {
       dispatch({
-        type: ALL_ORDER_REQUEST,
+        type: ORDER_SELLER_REQUEST,
       });
       let link = `/api/v1/admin/order/sellerOrders`;
+
+      const { data } = await axios.get(link);
+
+      dispatch({
+        type: ORDER_SELLER_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: ORDER_SELLER_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
+
+  
+export const getallOrders =() =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: ALL_ORDER_REQUEST,
+      });
+      let link = `/api/v1/admin/order/all`;
 
       const { data } = await axios.get(link);
 
@@ -30,3 +53,4 @@ export const getSellerOrders =() =>
       });
     }
   };
+

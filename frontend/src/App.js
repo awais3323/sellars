@@ -34,6 +34,9 @@ import Dashboard from "./components/Admin/Dashboard";
 import Notallowed from "./components/Others/Notallowed";
 import Admin_product_page from "./components/Admin/Admin_product_page";
 import Admin_user_page from "./components/Admin/Admin_user_page";
+import SearchProducts from "./components/Admin/Admin_Search_features/SearchProducts";
+import SearchOrders from "./components/Admin/Admin_Search_features/SearchOrders";
+import SearchUsers from "./components/Admin/Admin_Search_features/SearchUsers";
 // import { useAlert } from "react-alert";
 
 export const barContext = createContext();
@@ -125,6 +128,21 @@ const App = React.memo(() => {
               exact
               path="/admin/dashboard/Users"
               element={user?.role === "admin" || user?.role === "admin_one"?  <Admin_user_page/>:<Notallowed /> }
+            />
+            <Route
+              exact
+              path="/admin/dashboard/search_Products"
+              element={user?.role === "admin" || user?.role === "admin_one"?  <SearchProducts/>:<Notallowed /> }
+            />
+            <Route
+              exact
+              path="/admin/dashboard/search_Users"
+              element={user?.role === "admin" || user?.role === "admin_one"?  <SearchUsers/>:<Notallowed /> }
+            />
+            <Route
+              exact
+              path="/admin/dashboard/search_Orders"
+              element={user?.role === "admin" || user?.role === "admin_one"?  <SearchOrders/>:<Notallowed /> }
             />
             <Route exact index path="/" element={<Home />} />
             <Route exact path="/products/:id" element={<ProductDetails />} />

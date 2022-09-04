@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import MainContentBox from './Admin_others/MainContentBox'
+import React from 'react'
+import MainContentBox from './AdminMainBoxes/MainContentBox'
 import SideBar from './Admin_others/SideBar'
 import "./dashboard.css"
 
