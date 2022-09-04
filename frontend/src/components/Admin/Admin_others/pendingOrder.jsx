@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import "./pendingOrder.css";
 
-const PendingOrder = React.memo(({ orders }) => {
+const PendingOrder = React.memo(( props) => {
   let { modes } = useSelector((state) => state.DarkMode);
-
+  const {orders} = props
   var root = document.querySelector(":root");
 useEffect(() => {
     if (modes) {

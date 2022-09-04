@@ -1,6 +1,7 @@
 import React from 'react'
 import "./AllOrder.css"
-const AllOrder = ({orders}) => {
+const AllOrder = React.memo((props) => {
+  const {orders} = props
   return (
     <>
       <div className="mainPendingDiv fullDivSize">
@@ -33,6 +34,6 @@ const AllOrder = ({orders}) => {
       </div>
     </>
   )
-}
+})
 
 export default AllOrder

@@ -8,6 +8,7 @@ import AllOrder from "../Admin_others/AllOrder";
 import { VscRefresh } from "react-icons/vsc";
 import SmallBoxes_ad from "../Admin_others/Admin_Mainthings/SmallBoxes_ad";
 import Graphs from "../Admin_others/Admin_Mainthings/Graphs";
+import { useRef } from "react";
 
 
 
@@ -26,7 +27,7 @@ const MainContentBox = React.memo(() => {
   const [data_one, setData_one] = useState(null);
   const [data_two, setData_two] = useState(null);
   const [data_three, setData_three] = useState(null);
-  const [AllOrders, setAllOrders] = useState(null);
+  // const [AllOrders, setAllOrders] = useState(null);
 
   useEffect(() => {
     dispatch(getSellerOrders());
@@ -50,27 +51,22 @@ const MainContentBox = React.memo(() => {
     }
   }, [modes]);
 
-  useEffect(() => {
-  }, [user]);
 
 
 
   useEffect(() => {
     check_pending_orders();
     make_All_Order_Date();
-    set_All_Orders();
+    // set_All_Orders();
     // setAllOrders(orders);
-  }, [orders]);
+  }, [orders?.length>0]);
 
-  useEffect(() => {
-    make_All_Order_Date();
-  }, [orders?.user]);
 
   // console.log(OrderDates)
 
-  function set_All_Orders(){
-    setAllOrders(orders);
-  }
+  // function set_All_Orders(){
+  //   setAllOrders(orders);
+  // }
 
   function make_All_Order_Date() {
     let date_data1 = [];
@@ -139,7 +135,6 @@ const MainContentBox = React.memo(() => {
     }
   }
 
-
   return (
     <>
       <div className="contentBox">
@@ -191,8 +186,8 @@ const MainContentBox = React.memo(() => {
             </div> */}
 
             <div className="inLongBox1_1_2">
-              {AllOrders &&
-                AllOrders.map((s) => (
+              {orders &&
+                orders.map((s) => (
                   <AllOrder orders={s} key={orders?._id} />
                 ))}
             </div>

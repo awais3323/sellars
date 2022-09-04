@@ -9,6 +9,7 @@ import Product from "../../Home/Product";
 import Admin_categories from "../Admin_others/Admin_categories";
 import SmallBoxes_ad from "../Admin_others/Admin_Mainthings/SmallBoxes_ad";
 import Graphs from "../Admin_others/Admin_Mainthings/Graphs";
+import { useRef } from "react";
 
 
 
@@ -32,9 +33,7 @@ const MainContentBox2 = React.memo(() => {
     dispatch(getSellerDates());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getProduct());
-  }, [dispatch]);
+
 
   useEffect(() => {
     var root = document.querySelector(":root");
@@ -63,7 +62,7 @@ const MainContentBox2 = React.memo(() => {
   
   useEffect(() => {
     make_All_Order_Date();
-  }, [sellProdDates,filter_products,make_All_Product_Categories]);
+  }, [sellProdDates]);
 
   function filter_products(){
     if(products && user && products.length >0){
@@ -134,7 +133,8 @@ const MainContentBox2 = React.memo(() => {
     setData_three(date_data3);
   }
 
-  // function to extract the orders that are not completed yet
+  
+   // function to extract the orders that are not completed yet
 
   return (
     <>
@@ -145,10 +145,10 @@ const MainContentBox2 = React.memo(() => {
           <div className="inConBox1_1 bx">
             <div className="inConBox1_1_1 evheadBox">
               <h4>Products</h4>
-              <VscRefresh
+              {/* <VscRefresh
                 className="refericon"
                 onClick={() => dispatch(getSellerDates())}
-              />
+              /> */}
             </div>
             <div className="inConBox1_1_2">
             <Graphs data1={data_one} data2={data_two} data3={data_three}/>
