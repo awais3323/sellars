@@ -1,14 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Intro.css";
-const Intro = ({modes}) => {
-    var root = document.querySelector(':root');
-	if (modes) {
-		root.style.setProperty('--customColor', 'white');
-	}
-	else{
-		root.style.setProperty('--customColor', '#212429');
-	}
+const Intro = React.memo((props) => {
+  const {modes} = props
   return (
     <div className="myDiv">
         Made By
@@ -22,6 +16,6 @@ const Intro = ({modes}) => {
         with <span className="heart">❤</span>
     </div>
   );
-};
+});
 
 export default Intro;

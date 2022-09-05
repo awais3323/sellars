@@ -17,7 +17,7 @@ const router = express.Router();
 router.route("/product").get(getAllProucts);
 router.route("/producters").get(getAllProuctsAccCats);
 router
-  .route("/products/new")
+  .route("/admin/products/new")
   .post(isAuthenticatedUser, authorizeRoles("admin","admin_one"), createProduct);
 
 router

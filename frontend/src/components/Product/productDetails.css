@@ -1,10 +1,14 @@
 :root {
-  --customColor: #212429;
-  --orange:#ff8c32;
+	--customColorcon: RGB(245, 249, 252);
+    --customColorcon_two:white;
+    --customColorcon_font:white;
+    --customColorcon_boxshd:rgba(166,155,155,0.55);
+    --customColorcon_orange:#ff8c32;
+
 }
 
 .ProductDetails {
-  background-color: rgb(255, 255, 255);
+  background-color: var(--customColorcon_two);
   width: 100vw;
   max-width: 100%;
   padding: 6vmax;
@@ -52,7 +56,7 @@
 }
 
 .detailsBlock-1 > h2 {
-  color: var(--customColor);
+  color:var(--customColorcon_font);
   font: 600 2.6vmax "poppins";
 }
 .copier{
@@ -63,7 +67,7 @@
   justify-content: space-between;
   align-items: center;
   /* background-color: red; */
-  color: var(--customColor);
+  color: var(--customColorcon_font);
   width: 100%;
   /* font: 600 2.6vmax "poppins"; */
 
@@ -73,7 +77,7 @@
   font-size: 0.9vmax;
 }
 .logoCopy{
-  color: var(--customColor);
+  color: var(--customColorcon_font);
   font: 600 0.8vmax "poppins";
   margin: 0 1vmax;
   cursor: pointer;
@@ -83,14 +87,14 @@
 }
 
 .detailsBlock-1 > p {
-  color: var(--customColor);
+  color: var(--customColorcon_font);
   font: 200 0.8vmax "poppins";
 }
 .priceFlex {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  color: var(--customColor);
+  color: var(--customColorcon_font);
 }
 .detailsBlock-2 {
   display: flex;
@@ -112,13 +116,15 @@
   justify-content: space-between;
   align-items: center;
   /* background-color: red; */
-  color: var(--customColor);
+  color: var(--customColorcon_font);
+  
 }
 .detailsBlock-2-span-2 {
   background-color: #ff8b326b;
   border: 2px solid #ff8c32;
   padding: 0.41vmax;
-  color: var(--customColor);
+  color: var(--customColorcon_font);
+
   margin: 10px;
   border-radius: 5px;
 }
@@ -129,7 +135,8 @@
 }
 
 .detailsBlock-3 > h1 {
-  color: var(--customColor);
+  color: var(--customColorcon_font);
+
   font: 400 1.8vmax "Franklin Gothic Medium";
   margin: 1vmax 0;
 }
@@ -191,18 +198,18 @@ input[type="number"]::-webkit-outer-spin-button {
   /* border-top: 1px solid #e91e62c6; */
   border-bottom: 1px solid #ff8b32aa;
   padding: 1vmax 0;
-  color: var(--customColor);
+  color: var(--customColorcon_font);
   font: 400 1vmax "poppins";
   margin: 1vmax 0;
 }
 
 .detailsBlock-4 {
-  color: var(--customColor);
+  color: var(--customColorcon_font);
   font: 500 1.2vmax "poppins";
 }
 .colorsDiv{
   width: 80%;
-  color: var(--customColor);
+  color: var(--customColorcon_font);
   font: 500 1.2vmax "poppins";
   display: flex;
   flex-direction: row;
@@ -211,7 +218,17 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-content: flex-start;
   align-items: flex-start;
 }
-.insiderCol{
+.colorsDiv2{
+  width: 80%;
+  color: var(--customColorcon_font);
+  font: 500 1.2vmax "poppins";
+  display: flex;
+  flex-direction: row;
+  padding: 1vmax;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.insiderCol,.insiderCol2{
   /* background-color: red; */
   width: 30%;
   display: flex;
@@ -220,9 +237,10 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-content: space-around;
   align-items:center;
 }
+
 .detailsBlock-4 > p {
   /* background-color: red; */
-  color: var(--customColor);
+  color: var(--customColorcon_font);
   font: 300 0.8vmax "poppins";
   line-height: 40px;
 }
@@ -230,10 +248,10 @@ input[type="number"]::-webkit-outer-spin-button {
   display: flex;
   flex-direction: row;
   /* background-color: yellow; */
-  width: 50%;
+  width: 60%;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between
+  justify-content: space-around;
 }
 .popUpReview{
   background-color: red !important;
@@ -279,7 +297,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font: 300 1rem "poppins";
 }
 .headingTags{
-  color: var(--customColor);
+  color: var(--customColorcon_font);
   font: 500 1vmax "poppins";
   
 }
@@ -390,7 +408,7 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-content: center;
   background-color: transparent;
   height: 9vh;
-  color: var(--customColor);
+  color: var(--customColorcon_font);
   text-align: center;
   /* width: 150%; */
 }
@@ -423,7 +441,8 @@ input[type="number"]::-webkit-outer-spin-button {
     flex-wrap: wrap;
     background-color: transparent;
     height: 20vh;
-    color: var(--customColor);
+    color: var(--customColorcon_font);
+
   }
   .colorsDiv{
     width: 100%;

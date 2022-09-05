@@ -13,6 +13,9 @@ import {
   ALL_SELLER_DATES_FAIL,
   ALL_SELLER_DATES_SUCCESS,
   ALL_SELLER_DATES_REQUEST,
+  NEW_PRODUCT_REQUEST,
+  NEW_PRODUCT_SUCCESS,
+  NEW_PRODUCT_FAIL,
 } from "../constants/productConstant";
 
 export const getProduct =
@@ -103,6 +106,33 @@ export const getProductDetails = (id) => async (dispatch) => {
     });
   }
 };
+
+// Create Product
+export const createProduct = (productData) => async (dispatch) => {
+  try {
+    dispatch({ type: NEW_PRODUCT_REQUEST });
+
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const { data } = await axios.post(
+      `/api/v1/admin/products/new`,
+      productData,
+      config
+    );
+
+    dispatch({
+      type: NEW_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: NEW_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+}
 
 // clearing Errors
 export const clearErrors = () => async (dispatch) => {

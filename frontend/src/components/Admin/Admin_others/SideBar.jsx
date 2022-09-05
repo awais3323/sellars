@@ -80,7 +80,7 @@ const SideBar = React.memo(() => {
         <Menu iconShape="circle">
           <SubMenu title="Products" icon={<BsBasketFill />}>
             <MenuItem><Link to={"/admin/dashboard/products"} onClick={()=>topload()} >My Products</Link></MenuItem>
-            <MenuItem>Make Products</MenuItem>
+            <MenuItem><Link to={"/admin/dashboard/make_Products/NewProduct"} onClick={()=>topload()}>Make Products</Link></MenuItem>
             <MenuItem><Link to={"/admin/dashboard/search_Products"} onClick={()=>topload()}>Search Products</Link></MenuItem>
           </SubMenu>
           <SubMenu title="Orders" icon={<BsFillCartCheckFill />}>

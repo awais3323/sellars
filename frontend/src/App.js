@@ -8,14 +8,14 @@ import {
   Routes,
 } from "react-router-dom";
 import Footer from "./components/layout/Footer/Footer";
-import Home from "./components/Home/Home.js";
+import Home from "./components/Home/Home";
 import ProductDetails from "./components/Product/ProductDetails";
 import LoadingBar from "react-top-loading-bar";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ScrollTotop from "./components/Others/ScrollTotop";
-import Products from "./components/Product/Products.js";
-import ProductCat from "./components/Product/ProductCat.js";
+import Products from "./components/Product/Products";
+import ProductCat from "./components/Product/ProductCat";
 import LowerCatNav from "./components/layout/Header/LowerCatNav";
 import { useSelector } from "react-redux";
 import SaleProducts from "./components/Product/SaleProducts";
@@ -37,6 +37,7 @@ import Admin_user_page from "./components/Admin/Admin_user_page";
 import SearchProducts from "./components/Admin/Admin_Search_features/SearchProducts";
 import SearchOrders from "./components/Admin/Admin_Search_features/SearchOrders";
 import SearchUsers from "./components/Admin/Admin_Search_features/SearchUsers";
+import MakeProductsAdmin from "./components/Admin/AdminMakeProducts/MakeProductsAdmin";
 // import { useAlert } from "react-alert";
 
 export const barContext = createContext();
@@ -143,6 +144,11 @@ const App = React.memo(() => {
               exact
               path="/admin/dashboard/search_Orders"
               element={user?.role === "admin" || user?.role === "admin_one"?  <SearchOrders/>:<Notallowed /> }
+            />
+            <Route
+              exact
+              path="/admin/dashboard/make_Products/NewProduct"
+              element={user?.role === "admin" || user?.role === "admin_one"?  <MakeProductsAdmin/>:<Notallowed /> }
             />
             <Route exact index path="/" element={<Home />} />
             <Route exact path="/products/:id" element={<ProductDetails />} />

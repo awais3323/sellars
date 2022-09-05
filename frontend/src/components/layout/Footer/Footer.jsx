@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./Footer.css";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter} from "react-icons/fa";
@@ -6,15 +6,27 @@ import { FaInstagram} from "react-icons/fa";
 import { FaDashcube} from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Intro from "./Intro";
-const Footer = () => {
+
+const Footer = React.memo(() => {
 	const { modes } = useSelector((state) => state.DarkMode);
-	var root = document.querySelector(':root');
-	if (modes) {
-		root.style.setProperty('--customColor', 'white');
-	}
-	else{
-		root.style.setProperty('--customColor', '#212429');
-	}
+
+	useEffect(() => {
+		var root = document.querySelector(":root");
+		if (modes) {
+		  root.style.setProperty("--customColorcon", "#212429");
+		  root.style.setProperty("--customColorcon_two", "black");
+		  root.style.setProperty("--customColorcon_font", "white");
+		  root.style.setProperty("--customColorcon_boxshd", "rgba(166,155,155,0)");
+		} else {
+		  root.style.setProperty("--customColorcon", "rgba(196, 215, 224, 0.31)");
+		  root.style.setProperty("--customColorcon_two", "white");
+		  root.style.setProperty("--customColorcon_font", "#212429");
+		  root.style.setProperty(
+			"--customColorcon_boxshd",
+			"rgba(166,155,155,0.55)"
+		  );
+		}
+	  }, [modes]);
   return (
     <>
       <footer className="footer" style={{backgroundColor:`${modes?"black":"white"}`}}>
@@ -64,6 +76,6 @@ const Footer = () => {
   <Intro modes={modes}/>
     </>
   );
-};
+});
 
 export default Footer;

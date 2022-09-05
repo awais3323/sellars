@@ -8,7 +8,7 @@ import { Typography } from "@material-ui/core";
 import { useNavigate, Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 
-
+import MetaData from "../layout/MetaData"
 const Cart = () => {
   const alert = useAlert();
   const { modes } = useSelector((state) => state.DarkMode);
@@ -55,6 +55,7 @@ const Cart = () => {
 
   return (
     <Fragment>
+    <MetaData title="Cart" />
       {cartItems.length === 0 ? (
         <div className="emptyCart">
           <div className="inner1">

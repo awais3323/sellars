@@ -4,7 +4,7 @@ import "./productDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
-import ReviewCard from "./ReviewCard.js";
+import ReviewCard from "./ReviewCard";
 import MetaData from "../layout/MetaData";
 import { useAlert } from "react-alert";
 import { addItemsToCart } from "../../actions/cartAction";
@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import Taggers from "../Others/Taggers";
 import Product from "../Home/Product";
 import Colors from "../Others/Colors";
+import Sizes from "../Others/Sizes";
 
 
 const ProductDetails = React.memo((props) => {
@@ -27,7 +28,9 @@ const {changingState} = props
 
   const [quantity, setquantity] = useState(1);
   const [rating, setRating] = useState(0);
-  const [_hobbit,setHobbit]= useState(null)
+  const [_hobbit,setHobbit]= useState(null);
+  const [colorSP,setcolorSP]= useState(null);
+  const [sizesSP,setsizesSP]= useState(null);
   // const [filReviews,setfilReviews]= useState(null)
   // console.log(rating)
   const options = {
@@ -94,7 +97,7 @@ const {changingState} = props
 function cal_rel_prods() {
   //separating the products according to the id and the category of the shown or current product
   let filli = products.filter(
-    (s) => s.category === product?.category && s._id !== product?._id
+    (s) => s.category.toUpperCase() === product?.category.toUpperCase() && s._id !== product?._id
   );
   var killi = [];
   // checking the products according to the current products tags. by nested looping
@@ -131,13 +134,34 @@ useEffect(()=>{
   //  extractReviews();
   setHobbit(hobbit)
   },[product])
-  var colorSP = product?.colors?.split(",");
+  useEffect(()=>{
+    var colorSP = product?.colors?.split(",");
+    var sizeSP = product?.sizes?.split(",");
+setcolorSP(colorSP)
+setsizesSP(sizeSP)
+  },[product?.colors])
+  useEffect(() => {
+    var root = document.querySelector(":root");
+    if (modes) {
+      root.style.setProperty("--customColorcon", "#212429");
+      root.style.setProperty("--customColorcon_two", "black");
+      root.style.setProperty("--customColorcon_font", "white");
+      root.style.setProperty("--customColorcon_boxshd", "rgba(166,155,155,0)");
+    } else {
+      root.style.setProperty("--customColorcon", "rgba(196, 215, 224, 0.31)");
+      root.style.setProperty("--customColorcon_two", "white");
+      root.style.setProperty("--customColorcon_font", "#212429");
+      root.style.setProperty(
+        "--customColorcon_boxshd",
+        "rgba(166,155,155,0.55)"
+      );
+    }
+  }, [modes]);
   return (
     <Fragment>
       <MetaData title={`${product?.name}`} />
       <div
         className="ProductDetails"
-        style={{ backgroundColor: `${modes ? "black" : "white"}` }}
       >
         {/* style={{ backgroundColor: 'grey'}}    >renders {renders.current++}</p> */}
         
@@ -168,7 +192,7 @@ useEffect(()=>{
         
           >
             {product?.images &&
-              product?.images.map((item, i) => (
+              product?.images?.map((item, i) => (
                 <img
                   // data-aos="fade-up"
                   className="CarouselImage"
@@ -186,7 +210,7 @@ useEffect(()=>{
             </h2>
             <div className="copier">
               <p className="idpara">
-                Product Id: <span id="prodId">#{product?._id}</span>
+                Product Id: <span id="prodId">{product?._id}</span>
               </p>
               <p className="logoCopy" onClick={() => copies()}>
                 Copy
@@ -202,7 +226,18 @@ useEffect(()=>{
             <div className="insiderCol">
                 {
                   colorSP?.length > 0? colorSP && colorSP.map((s)=>(
-                  <Colors s={s} modes={modes} key={Math.floor(Math.random()*100)}/>
+                  <Colors s={s} modes={modes} key={s}/>
+                  // console.log(s)
+                  ))
+               :"❌" }
+                  </div>
+              </div>
+          <div className="colorsDiv2">
+            <span >Sizes : </span>
+            <div className="insiderCol2">
+                {
+                  sizesSP?.length > 0? sizesSP.map((s)=>(
+                  <Sizes sizes={s} modes={modes} key={s}/>
                   // console.log(s)
                   ))
                :"❌" }
@@ -290,6 +325,15 @@ useEffect(()=>{
             >
               Add to Cart
             </button>
+            {/* <button data-aos="fade-up" className="submitReview">
+              Edit Product
+            </button>
+            <button
+              data-aos="fade-up"
+              className="submitReview extraAdd"
+            >
+              Delete Product
+            </button> */}
           </div>
         </div>
       </div>

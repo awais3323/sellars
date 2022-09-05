@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import {
   CategoriesProdReducer,
+  newProductReducer,
   productDetailsReducer,
   productReducer,
   sellerProductDates,
@@ -34,7 +35,8 @@ const reducer = combineReducers({
   ordersAll:allorderReducer,
   sellprodDates:sellerProductDates,
   sellUserDates:SellerUsersDates,
-  allUserDates:AllUsersDates
+  allUserDates:AllUsersDates,
+  newProduct: newProductReducer
 });
 
 let initialState = {

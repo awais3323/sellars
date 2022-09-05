@@ -36,6 +36,13 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter available colors"],
     },
+    sizes:{
+        type: String,
+        // required: [true, "Please enter available sizes for product"],
+    },
+    weight:{
+        type:Number,
+    },
     category: {
         type: String,
         required: [true, "Category is must"]
@@ -109,10 +116,7 @@ const productSchema = new mongoose.Schema({
             }
         }
     ],
-    idxs:{
-        type: String,
-        required: [true, "Please enter available colors"],
-    },
+
     user:{
         type:mongoose.Schema.ObjectId,
         ref:"User",

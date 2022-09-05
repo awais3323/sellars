@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./MainControllerBox2.css";
-import { getSellerDates } from "../../../actions/productAction";
+import { getSellerDates,getProduct } from "../../../actions/productAction";
 import { VscRefresh } from "react-icons/vsc";
-import { getProduct } from "../../../actions/productAction";
 import Product from "../../Home/Product";
 import Admin_categories from "../Admin_others/Admin_categories";
 import SmallBoxes_ad from "../Admin_others/Admin_Mainthings/SmallBoxes_ad";
@@ -145,10 +144,10 @@ const MainContentBox2 = React.memo(() => {
           <div className="inConBox1_1 bx">
             <div className="inConBox1_1_1 evheadBox">
               <h4>Products</h4>
-              {/* <VscRefresh
+            <VscRefresh
                 className="refericon"
                 onClick={() => dispatch(getSellerDates())}
-              /> */}
+              />
             </div>
             <div className="inConBox1_1_2">
             <Graphs data1={data_one} data2={data_two} data3={data_three}/>
