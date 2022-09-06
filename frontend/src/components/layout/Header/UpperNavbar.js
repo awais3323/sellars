@@ -1,10 +1,9 @@
-import React, { useState,useContext, useRef } from "react";
+import React, { useState,useContext, useRef,memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import { logout } from "../../../actions/userAction";
@@ -13,7 +12,6 @@ import { barContext } from "../../../App";
 // import { topLoadingBarReducer } from "../../../reducers/otherReducer";
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { BsTypeH1 } from "react-icons/bs";
 
 const UpperNavbar = () => {
   const navigate = useNavigate();
@@ -27,6 +25,8 @@ const UpperNavbar = () => {
   const { modes } = useSelector((state) => state.DarkMode);
   const { cartItems } = useSelector((state) => state.cart);
 
+
+  console.log(user)
   const options = [
       // { icon: <PersonIcon />, name: "Profile", func: account },
       { icon: <ShoppingCartIcon />, name: `cart(${cartItems.length})`, func: cart },
@@ -122,4 +122,4 @@ const UpperNavbar = () => {
   );
 };
 
-export default UpperNavbar;
+export default memo(UpperNavbar);
