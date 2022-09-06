@@ -14,9 +14,11 @@ import Taggers from "../Others/Taggers";
 import Product from "../Home/Product";
 import Colors from "../Others/Colors";
 import Sizes from "../Others/Sizes";
+import { useRef } from "react";
+import { useCallback } from "react";
 
 
-const ProductDetails = React.memo((props) => {
+export default function ProductDetails(props){
   const alert = useAlert();
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -94,7 +96,7 @@ const {changingState} = props
     }
 
 // this funcition get all the products and show the products to the users that is according to the taste and tags of the products that he is currently reviewing or watching. in more suggesstions
-function cal_rel_prods() {
+const  cal_rel_prods = useCallback(() =>{
   //separating the products according to the id and the category of the shown or current product
   let filli = products.filter(
     (s) => s.category.toUpperCase() === product?.category.toUpperCase() && s._id !== product?._id
@@ -126,7 +128,7 @@ function cal_rel_prods() {
   let hobbitiers = dragon.filter((s) => s._id !== product?._id);
   return hobbitiers;
   
-}
+},[products])
 
 // calling the fucntion on the condition of change of the current product.
 useEffect(()=>{
@@ -134,12 +136,20 @@ useEffect(()=>{
   //  extractReviews();
   setHobbit(hobbit)
   },[product])
-  useEffect(()=>{
-    var colorSP = product?.colors?.split(",");
-    var sizeSP = product?.sizes?.split(",");
-setcolorSP(colorSP)
-setsizesSP(sizeSP)
-  },[product?.colors])
+  // useEffect(()=>{
+
+
+    const setColors = useCallback(()=>{
+
+      var colorSP = product?.colors?.split(",");
+      var sizeSP = product?.sizes?.split(",");
+      setcolorSP(colorSP)
+      setsizesSP(sizeSP)
+    },[product?.colors])
+
+  // },[product?.colors])
+
+
   useEffect(() => {
     var root = document.querySelector(":root");
     if (modes) {
@@ -157,9 +167,11 @@ setsizesSP(sizeSP)
       );
     }
   }, [modes]);
+  // const render = useRef(0)
   return (
     <Fragment>
       <MetaData title={`${product?.name}`} />
+      {/* <h1>{render.current++}</h1> */}
       <div
         className="ProductDetails"
       >
@@ -384,6 +396,6 @@ setsizesSP(sizeSP)
       </div>
     </Fragment>
   );
-})
+}
 
-export default ProductDetails;
+// export default ProductDetails;

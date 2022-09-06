@@ -1,6 +1,6 @@
-import React from 'react'
+import React,{memo} from 'react'
 import "./color.css"
-const Colors = React.memo((props) => {
+const Colors = (props) => {
     // console.log(props.s)
     const {s} =props
   return (
@@ -10,5 +10,5 @@ const Colors = React.memo((props) => {
     </div>
     </>
   )
-})
-export default Colors
+}
+export default memo(Colors)

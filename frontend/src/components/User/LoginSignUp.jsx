@@ -28,6 +28,8 @@ const LoginSignUp = () => {
   const navigate = useNavigate();
   const topload = useContext(barContext);
 
+  // console.log(topload);
+
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );

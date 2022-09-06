@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState,useContext, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ import { barContext } from "../../../App";
 // import { topLoadingBarReducer } from "../../../reducers/otherReducer";
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { BsTypeH1 } from "react-icons/bs";
 
 const UpperNavbar = () => {
   const navigate = useNavigate();
@@ -20,14 +21,15 @@ const UpperNavbar = () => {
   const dispatch = useDispatch();
   const topload = useContext(barContext)
 
+  console.log(topload)
+  const { user } = useSelector((state) => state.user);
   const [open, setOpen] = useState(true);
   const { modes } = useSelector((state) => state.DarkMode);
-  const { user } = useSelector((state) => state.user);
   const { cartItems } = useSelector((state) => state.cart);
 
   const options = [
-    // { icon: <PersonIcon />, name: "Profile", func: account },
-    { icon: <ShoppingCartIcon />, name: `cart(${cartItems.length})`, func: cart },
+      // { icon: <PersonIcon />, name: "Profile", func: account },
+      { icon: <ShoppingCartIcon />, name: `cart(${cartItems.length})`, func: cart },
     { icon: <ListAltIcon />, name: "Orders", func: order },
     { icon: <ExitToAppIcon />, name: "Log Out", func: logoutUser },
   ];
@@ -63,7 +65,10 @@ const UpperNavbar = () => {
     dispatch(logout());
     alert.success("Logout Successfully");
   }
+  const renders = useRef(0)
   return (
+    <>
+    <h1>{renders.current++}</h1>
     <nav
       className={`navbar navbar-${modes ? `dark` : `light`} bg-${
         modes ? `dark` : `light`
@@ -112,6 +117,8 @@ const UpperNavbar = () => {
         )}
       </div>
     </nav>
+    </>
+
   );
 };
 
