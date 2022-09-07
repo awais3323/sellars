@@ -87,8 +87,11 @@ function hello(){
     }
 }
 // console.log(props.title)
+  let render = React.useRef(0)
+
   return (
     <>
+    <h1>{render.current++}</h1>
       <div className="wrapper">
         <h1 className="title_Head">Search: <span className="cloloror">{props.title}</span></h1>
         <div className="serach_Elements">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { render } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getallOrders} from "../../../actions/orderActions";
 import AllOrder from "../Admin_others/AllOrder";
@@ -74,9 +75,11 @@ function checkuserOrders(){
   // function to get the products according to the value of the drop down
 
   //   console.log(ex_products)
+  // let render = React.useRef(0)
   return (
     <>
       <div className="bigsearchBox">
+        {/* <h1>{render.current++}</h1> */}
         <SearchBarAd
           list={arrayList}
           items={ex_orders}

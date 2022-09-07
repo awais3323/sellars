@@ -21,6 +21,7 @@ import FacebookLogin from "react-facebook-login";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { gapi } from "gapi-script";
+import { useMemo } from "react";
 
 const LoginSignUp = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,6 @@ const LoginSignUp = () => {
   const navigate = useNavigate();
   const topload = useContext(barContext);
 
-  // console.log(topload);
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
@@ -40,15 +40,7 @@ const LoginSignUp = () => {
   const registerTab = useRef(null);
   const switcherTab = useRef(null);
 
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
 
-  const { name, email, password } = user;
 
   const [avatar, setAvatar] = useState(profilePng);
   const [avatarPreview, setAvatarPreview] = useState(profilePng);
@@ -56,8 +48,9 @@ const LoginSignUp = () => {
 
   const loginSubmit = (e) => {
     e.preventDefault();
-    let logger = loginEmail.toLowerCase();
-    dispatch(login(logger, loginPassword));
+    let logger = document.getElementById("loginEmail").value.trim().toLowerCase();
+    let logpass = document.getElementById("loginPassWord").value.trim()
+    dispatch(login(logger, logpass));
   };
 
   const registerSubmit = (e) => {
@@ -65,11 +58,10 @@ const LoginSignUp = () => {
 
     const myForm = new FormData();
 
-      myForm.set("name", name);
-    myForm.set("email", email.toLowerCase());
-    myForm.set("password", password);
+    myForm.set("name", document.getElementById("regName").value.trim());
+    myForm.set("email", document.getElementById("regEmail").value.trim().toLowerCase());
+    myForm.set("password", document.getElementById("regPass").value.trim());
     myForm.set("avatar", avatar);
-    // console.log(avatar)
 
     dispatch(register(myForm));
   };
@@ -86,9 +78,7 @@ const LoginSignUp = () => {
       };
 
       reader.readAsDataURL(e.target.files[0]);
-    } else {
-      setUser({ ...user, [e.target.name]: e.target.value });
-    }
+    } 
   };
 
   useEffect(() => {
@@ -128,7 +118,6 @@ const LoginSignUp = () => {
   }
 
   function SucresponseGoogle(res) {
-    // console.log(typeof(res.profileObj.googleId))
     const number = res.profileObj.googleId;
     let newstr = number.replace(/1/g, "sell");
     let newstr_2 = newstr.replace(/0/g, "ars");
@@ -173,14 +162,13 @@ const LoginSignUp = () => {
     // console.log(res)
   }
   let renders = useRef(0)
-  console.log("i am rendering")
+  const textFirstName = useRef(null)
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-          <h1>{renders.current++}</h1>
           <div className="upauth"></div>
           <div
             className={`${
@@ -193,6 +181,7 @@ const LoginSignUp = () => {
               }`}
             >
               <div>
+          <h1>Parent Component :{renders.current++}</h1>
                 <div className="login_signUp_toggle">
                   <p
                     onClick={(e) => switchTabs(e, "login")}
@@ -217,9 +206,11 @@ const LoginSignUp = () => {
                     type="email"
                     placeholder="Email"
                     required
-                    value={loginEmail}
-                    onChange={(e) => setLoginEmail(e.target.value)}
+                    id="loginEmail"
+                    // value={loginEmail}
+                    // onChange={(e) => setLoginEmail(e.target.value)}
                   />
+
                 </div>
                 <div className="loginPassword">
                   <LockOpenIcon />
@@ -227,8 +218,9 @@ const LoginSignUp = () => {
                     type={type?"text":"password"}
                     placeholder="Password"
                     required
-                    value={loginPassword}
-                    onChange={(e) => setLoginPassword(e.target.value)}
+                    id="loginPassWord"
+                    // value={loginPassword}
+                    // onChange={(e) => setLoginPassword(e.target.value)}
                     />
                     {
                       type?
@@ -289,8 +281,9 @@ const LoginSignUp = () => {
                     placeholder="Name"
                     required
                     name="name"
-                    value={name}
-                    onChange={registerDataChange}
+                    id="regName"
+                    // value={name}
+                    // onChange={registerDataChange}
                   />
                 </div>
                 <div className="signUpEmail">
@@ -300,8 +293,9 @@ const LoginSignUp = () => {
                     placeholder="Email"
                     required
                     name="email"
-                    value={email}
-                    onChange={registerDataChange}
+                    id="regEmail"
+                    // value={email}
+                    // onChange={registerDataChange}
                   />
                 </div>
                 <div className="signUpPassword">
@@ -311,8 +305,9 @@ const LoginSignUp = () => {
                     placeholder="Password"
                     required
                     name="password"
-                    value={password}
-                    onChange={registerDataChange}
+                    id="regPass"
+                    // value={password}
+                    // onChange={registerDataChange}
                   />
                     <FaEye onClick={()=>settype(!type)}/>
                 </div>
