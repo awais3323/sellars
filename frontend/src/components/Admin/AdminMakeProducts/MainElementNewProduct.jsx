@@ -7,6 +7,9 @@ import { Button } from "@material-ui/core";
 import MetaData from "../../layout/MetaData";
 import { NEW_PRODUCT_RESET } from "../../../constants/productConstant";
 import { useNavigate } from "react-router-dom";
+import $ from 'jquery';
+import Taggers from "../../Others/Taggers";
+
 
 const MainElementNewProduct = () => {
   const dispatch = useDispatch();
@@ -61,22 +64,30 @@ const MainElementNewProduct = () => {
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
-    let gotColor = Color.split(" ").join(",")
-    if(Size !== ""){
-      var gotSize = Size.split(" ").join(",")
+    let gotColor = document.getElementById("prodColor").value.trim().split(" ").join(",")
+    let sizer = document.getElementById("prodSize").value
+    if(sizer !== ""){
+      var gotSize = sizer.trim().split(" ").join(",")
+      console.log(gotSize)
     }
-    let tagers = [Tag1,Tag2,Tag3,Tag4,Tag5] ;
+    // let tagers = [Tag1,Tag2,Tag3,Tag4,Tag5] ;
+    let tagers = []
+  for (let i = 1; i <= 5; i++) {
+    let vals=document.getElementById(`prodtag${i}`).value.trim().toUpperCase()
+    tagers.unshift(vals)
+  }
+
     // tagers.push()
     const myForm = new FormData();
 
-    myForm.set("name", name);
-    myForm.set("price", price);
-    myForm.set("description", description);
-    myForm.set("category", category);
-    myForm.set("Stock", Stock);
-    myForm.set("sales", Sales);
-    myForm.set("limited", Limited);
-    myForm.set("weight", Weight);
+    myForm.set("name", document.getElementById("prodName").value.trim());
+    myForm.set("price", document.getElementById("prodPrice").value.trim());
+    myForm.set("description", document.getElementById("prodDescription").value.trim());
+    myForm.set("category", document.getElementById("prodCat").value.trim().toLowerCase());
+    myForm.set("Stock", document.getElementById("prodStock").value.trim());
+    myForm.set("sales", document.getElementById("prodSales").value.trim());
+    myForm.set("limited", document.getElementById("prodLimited").value.trim());
+    myForm.set("weight", document.getElementById("prodWeight").value.trim());
     myForm.set("colors", gotColor);
     myForm.set("sizes", gotSize);
     // myForm.set("Tags", tagers);
@@ -131,10 +142,18 @@ const MainElementNewProduct = () => {
       );
     }
   }, [modes]);
+  let render = React.useRef(0)
 
+  $(document).ready(function () {
+    $("#prodCat").keyup(function () {
+        var value = $(this).val();
+        $("#prodtag5").val(value);
+    });
+});
   return (
     <Fragment>
       <MetaData title="Create Product" />
+      <h1>{render.current++}</h1>
       <div className="dashboard">
         <div className="newProductContainer">
           <form
@@ -152,8 +171,9 @@ const MainElementNewProduct = () => {
                 placeholder="Product Name"
                 required
                 className={"inputfiled textes"}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                id="prodName"
+                // value={name}
+                // onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div>
@@ -162,7 +182,8 @@ const MainElementNewProduct = () => {
                 placeholder="Price Numbers only"
                 required
                 className={"inputfiled textes"}
-                onChange={(e) => setPrice(e.target.value)}
+                id="prodPrice"
+                // onChange={(e) => setPrice(e.target.value)}
               />
             </div>
 
@@ -173,18 +194,20 @@ const MainElementNewProduct = () => {
                 placeholder="Category"
                 required
                 className={"inputfiled textes"}
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                id="prodCat"
+                // value={category}
+                // onChange={(e) => setCategory(e.target.value)}
               />
             </div>
 
             <div>
               <input
                 type="number"
-                placeholder="Stock  Numbers only"
+                placeholder="Stock (Numbers only)"
                 required
                 className={"inputfiled textes"}
-                onChange={(e) => setStock(e.target.value)}
+                id="prodStock"
+                // onChange={(e) => setStock(e.target.value)}
               />
             </div>
             <div>
@@ -195,7 +218,8 @@ const MainElementNewProduct = () => {
                 placeholder="Colors Available"
                 required
                 className={"inputfiled textes"}
-                onChange={(e) => setColor(e.target.value)}
+                id="prodColor"
+                // onChange={(e) => setColor(e.target.value)}
                 />
               <small className="theSmall">Please Add the "Color" name with space spaces between them</small>
                 </div>
@@ -208,7 +232,8 @@ const MainElementNewProduct = () => {
                 placeholder="Sizes Available"
                 // required
                 className={"inputfiled textes"}
-                onChange={(e) => setSize(e.target.value)}
+                id="prodSize"
+                // onChange={(e) => setSize(e.target.value)}
                 />
               <small className="theSmall">Please Add the "Size" with space spaces between them</small>
                 </div>
@@ -224,7 +249,8 @@ const MainElementNewProduct = () => {
                 placeholder="Sale Numbers only"
                 // required
                 className={"inputfiled textes"}
-                onChange={(e) => setSales(e.target.value)}
+                id="prodSales"
+                // onChange={(e) => setSales(e.target.value)}
                 />
               <small className="theSmall">Entered Number will be calculated as percentage on discount in total price</small>
                 </div>
@@ -235,7 +261,7 @@ const MainElementNewProduct = () => {
               <select onChange={(e) => setlimited(e.target.value)} className={"inputfiled textes"}>
                 <option value="">If the Product is Limited or Not?</option>
                 {opt.map((cate) => (
-                  <option key={cate} value={cate}>
+                  <option key={cate} id="prodLimited">
                     {cate}
                   </option>
                 ))}
@@ -253,7 +279,8 @@ const MainElementNewProduct = () => {
                 required
                 step={"any"}
                 className={"inputfiled textes"}
-                onChange={(e) => setWeight(e.target.value)}
+                id="prodWeight"
+                // onChange={(e) => setWeight(e.target.value)}
                 />
               <small className="theSmall">Enter the weight of your product including the packaging material </small>
                 </div>
@@ -266,7 +293,8 @@ const MainElementNewProduct = () => {
                 placeholder="Tag1"
                 required
                 className={"inputfiled textestag"}
-                onChange={(e) => setTag1(e.target.value)}
+                id="prodtag1"
+                // onChange={(e) => setTag1(e.target.value)}
                 />
 
               <input
@@ -274,7 +302,8 @@ const MainElementNewProduct = () => {
                 placeholder="Tag2"
                 required
                 className={"inputfiled textestag"}
-                onChange={(e) => setTag2(e.target.value)}
+                id="prodtag2"
+                // onChange={(e) => setTag2(e.target.value)}
                 />
 
               <input
@@ -282,7 +311,8 @@ const MainElementNewProduct = () => {
                 placeholder="Tag3"
                 required
                 className={"inputfiled textestag"}
-                onChange={(e) => setTag3(e.target.value)}
+                id="prodtag3"
+                // onChange={(e) => setTag3(e.target.value)}
                 />
 
               <input
@@ -290,7 +320,8 @@ const MainElementNewProduct = () => {
                 placeholder="Tag4"
                 required
                 className={"inputfiled textestag"}
-                onChange={(e) => setTag4(e.target.value)}
+                id="prodtag4"
+                // onChange={(e) => setTag4(e.target.value)}
                 />
 
               <input
@@ -298,7 +329,10 @@ const MainElementNewProduct = () => {
                 placeholder="Tag5"
                 required
                 className={"inputfiled textestag"}
-                onChange={(e) => setTag5(e.target.value)}
+                id="prodtag5"
+                readOnly
+                // value={category}
+                // onChange={(e) => setTag5(e.target.value)}
                 />
             </div>
             <div>
@@ -306,8 +340,9 @@ const MainElementNewProduct = () => {
 
               <textarea
                 placeholder={`Product Description`}
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                // value={description}
+                // onChange={(e) => setDescription(e.target.value)}
+                id="prodDescription"
                 cols="30"
                 rows="10"
                 required

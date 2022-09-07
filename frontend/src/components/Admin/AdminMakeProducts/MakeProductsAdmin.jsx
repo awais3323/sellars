@@ -5,6 +5,7 @@ const MakeProductsAdmin = () => {
   return (
     <>
     <div className="mainBoxes">
+
       <SideBar/>
       <MainElementNewProduct/>
     </div>
