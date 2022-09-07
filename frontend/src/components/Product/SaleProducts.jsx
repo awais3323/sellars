@@ -49,7 +49,7 @@ const SaleProducts = (props) => {
 
   const filProd = products.filter(item => item.sales)
   // const filProd = products
-  // console.log(filProd);
+  console.log(filProd);
   return (
     <Fragment>
       {loading ? (

@@ -22,8 +22,7 @@ const Slider = () => {
     indicatorIconButtonProps={{
         style: {
             padding: '3px',    // 1
-            color: 'grey',       // 3
-            // borderRadius: "100px"
+            color: 'grey',      
         }
     }}
     activeIndicatorIconButtonProps={{
@@ -32,12 +31,12 @@ const Slider = () => {
             color: '#FF8C32' // 2
         }
     }}
-    indicatorContainerProps={{
-        style: {
-            // marginTop: '50px',
-            // textAlign: 'right' 
-        }
-      }}
+    // indicatorContainerProps={{
+    //     style: {
+    //         // marginTop: '50px',
+    //         // textAlign: 'right' 
+    //     }
+    //   }}
       >
       {images &&
         images.map((item, i) => (
@@ -53,4 +52,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default React.memo(Slider);

@@ -16,17 +16,21 @@ import Colors from "../Others/Colors";
 import Sizes from "../Others/Sizes";
 import { useRef } from "react";
 import { useCallback } from "react";
+import Loader from "../layout/Loader/Loader";
 
 
-export default function ProductDetails(props){
+const ProductDetails = React.memo((props) => {
   const alert = useAlert();
   const dispatch = useDispatch();
   const { id } = useParams();
 
 const {changingState} = props
-  const { products } = useSelector((state) => state.products);
+
+  const { loading,products } = useSelector((state) => state.products);
   // const { user } = useSelector((state) => state.user);
   const { modes } = useSelector((state) => state.DarkMode);
+
+  // console.log(products)
 
   const [quantity, setquantity] = useState(1);
   const [rating, setRating] = useState(0);
@@ -136,18 +140,13 @@ useEffect(()=>{
   //  extractReviews();
   setHobbit(hobbit)
   },[product])
-  // useEffect(()=>{
-
-
-    const setColors = useCallback(()=>{
-
+  useEffect(()=>{
       var colorSP = product?.colors?.split(",");
       var sizeSP = product?.sizes?.split(",");
       setcolorSP(colorSP)
       setsizesSP(sizeSP)
     },[product?.colors])
 
-  // },[product?.colors])
 
 
   useEffect(() => {
@@ -169,6 +168,10 @@ useEffect(()=>{
   }, [modes]);
   // const render = useRef(0)
   return (
+    <Fragment>
+      {
+        loading?<Loader/>:
+
     <Fragment>
       <MetaData title={`${product?.name}`} />
       {/* <h1>{render.current++}</h1> */}
@@ -395,7 +398,9 @@ useEffect(()=>{
         </div>
       </div>
     </Fragment>
+          }
+</Fragment>
   );
-}
+})
 
-// export default ProductDetails;
+export default ProductDetails;

@@ -132,6 +132,7 @@
   transition: all 0.21s ease-in-out;
   /* border-radius: 40px; */
   margin-bottom: 20px;
+  /* background-color: red; */
 }
 .productCard:hover {
   transition: all 0.1s ease-in-out;
@@ -144,6 +145,8 @@
   justify-content: center;
   height: 15rem;
   width: 17rem;
+  margin: auto;
+  /* width: 100%; */
   /* background-color: white; */
   border-radius: 70px;
 }
@@ -337,6 +340,17 @@
   .overlay2{
     height: 6%;
     width: 30%;
+  }
+
+}
+@media screen and (max-width: 325px) {
+  .productCard {
+    max-width: 8rem;
+    /* background-color: red; */
+  }
+  .ImgCont {
+    height: 6rem;
+    width: 7rem;
   }
 }
 @media screen and (max-width: 300px) {

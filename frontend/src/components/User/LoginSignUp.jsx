@@ -172,12 +172,15 @@ const LoginSignUp = () => {
   function RE_responseFacebook(res){
     // console.log(res)
   }
+  let renders = useRef(0)
+  console.log("i am rendering")
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
+          <h1>{renders.current++}</h1>
           <div className="upauth"></div>
           <div
             className={`${

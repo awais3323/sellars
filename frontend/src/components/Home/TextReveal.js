@@ -30,4 +30,4 @@ const TextReveal = (props) => {
   );
 };
 
-export default TextReveal;
+export default React.memo(TextReveal);

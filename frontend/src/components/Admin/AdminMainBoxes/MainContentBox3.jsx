@@ -1,4 +1,4 @@
-import React , { useEffect,useState } from 'react'
+import React , { useEffect,useRef,useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {  getSellerUsersDates } from '../../../actions/userAction'
 import SmallBoxes_ad from '../Admin_others/Admin_Mainthings/SmallBoxes_ad'
@@ -123,7 +123,7 @@ function recent_users(){
   return (
     <>
       <div className="contentBox_v3">
-
+        {/* <h1>{renders.current++}</h1> */}
         <SmallBoxes_ad/>
         <div className="conBox1">
           <div className="inConBox1_1 bx">

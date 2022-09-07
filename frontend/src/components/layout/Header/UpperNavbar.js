@@ -1,4 +1,4 @@
-import React, { useState,useContext, useRef,memo } from "react";
+import React, { useState,useContext, useLayoutEffect, Fragment} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,37 +9,23 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import { logout } from "../../../actions/userAction";
 import { useAlert } from "react-alert";
 import { barContext } from "../../../App";
-// import { topLoadingBarReducer } from "../../../reducers/otherReducer";
-
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+
 
 const UpperNavbar = () => {
   const navigate = useNavigate();
   const alert = useAlert();
   const dispatch = useDispatch();
   const topload = useContext(barContext)
-
-  console.log(topload)
-  const { user } = useSelector((state) => state.user);
+  
   const [open, setOpen] = useState(true);
+  const [options, setoptions] = useState([])
+
+  const { loading,user } = useSelector((state) => state.user);
   const { modes } = useSelector((state) => state.DarkMode);
   const { cartItems } = useSelector((state) => state.cart);
-
-
-  console.log(user)
-  const options = [
-      // { icon: <PersonIcon />, name: "Profile", func: account },
-      { icon: <ShoppingCartIcon />, name: `cart(${cartItems.length})`, func: cart },
-    { icon: <ListAltIcon />, name: "Orders", func: order },
-    { icon: <ExitToAppIcon />, name: "Log Out", func: logoutUser },
-  ];
-  if (user?.role === "admin" || user?.role === "admin_one") {
-    options.unshift({
-      icon: <DashboardIcon />,
-      name: "Dashboard",
-      func: dashboard,
-    });
-  }
+  
+  
   // console.log(user?.role);
   function dashboard() {
     topload()
@@ -65,11 +51,34 @@ const UpperNavbar = () => {
     dispatch(logout());
     alert.success("Logout Successfully");
   }
-  const renders = useRef(0)
+  useLayoutEffect(()=>{
+    
+    let opt = [
+      // { icon: <PersonIcon />, name: "Profile", func: account },
+      { icon: <ShoppingCartIcon />, name: `cart(${cartItems.length})`, func: cart },
+      { icon: <ListAltIcon />, name: "Orders", func: order },
+    { icon: <ExitToAppIcon />, name: "Log Out", func: logoutUser },
+  ];
+  if (user?.role === "admin" || user?.role === "admin_one") {
+    opt.unshift({
+      icon: <DashboardIcon />,
+      name: "Dashboard",
+      func: dashboard,
+    });
+  }
+
+  setoptions(opt)
+ return ()=>setoptions([])
+},[user])
+
+
+
   return (
     <>
-    <h1>{renders.current++}</h1>
-    <nav
+    <Fragment>
+      {!loading ?
+
+<nav
       className={`navbar navbar-${modes ? `dark` : `light`} bg-${
         modes ? `dark` : `light`
       } ${modes ? "blackImp" : "whiteImp"}`}
@@ -117,9 +126,11 @@ const UpperNavbar = () => {
         )}
       </div>
     </nav>
+          :""}
+          </Fragment>
     </>
 
   );
 };
 
-export default memo(UpperNavbar);
+export default React.memo(UpperNavbar);

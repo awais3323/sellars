@@ -51,12 +51,12 @@
   transition: all 0.51s ease-in-out;
 }
 .navbar {
-  z-index: 10001;
+  z-index: 1001;
   margin: 0;
   /* border: 2px solid green; */
 }
 .navbar-expand-lg {
-  z-index: 1000;
+  z-index: 1001;
   margin: 0;
 }
 .navbar-toggler{
@@ -150,7 +150,15 @@
   display: flex;
   align-items: flex-end;
   z-index: 100;
-  /* background-color: white !important; */
+  width: 100%;
+  height: 10vh;
+  overflow-x: auto;
+  overflow-x: scroll;
+}
+.container4 {
+  display: flex;
+  align-items: flex-end;
+  z-index: 100;
   width: 100%;
   height: 10vh;
   overflow-x: auto;
@@ -176,7 +184,7 @@
   font-size: 0.7vmax;
   padding: 10px;
   cursor: pointer;
-  z-index: 200;
+  z-index: 1002;
   margin-bottom: 8px;
   /* background: red !important; */
 }
@@ -260,11 +268,19 @@
 }
 
 @media screen and (max-width: 450px) {
+  .container3{
+    padding-bottom: 19px;
+  }
+  .container4{
+    height: 12vh;
+    padding-bottom: 1px;
+  }
   .posFix {
     margin-top: -16.5%;
   }
   .posFix2 {
     margin-top: -8.5%;
+    /* padding: 10px; */
   }
   .Linker {
     font-size: 1.5vmax;
@@ -276,17 +292,28 @@
 }
 @media screen and (max-width: 400px) {
   .container3{
-    padding: 3px;
+    padding-bottom: 10px;
+  }
+  .container4{
+    height: 11vh;
+    padding-bottom: 1px;
   }
   .posFix {
-    margin-top: -17.8%;
+    margin-top: -18%;
   }
   .posFix2 {
-    margin-top: -9%;
+    margin-top: -9.5%;
   }
 
 }
 @media screen and (max-width: 350px) {
+  .container3{
+    padding-bottom: 17.5px;
+  }
+  .container4{
+    height: 11vh;
+    padding-bottom: 1px;
+  }
   .posFix {
     margin-top: -13.5%;
   }
@@ -316,5 +343,18 @@
   }
   .posFix2 {
     margin-top: -4.5%;
+  }
+  @media (min-height: 667px) and (max-width: 375px) {
+    .container3{
+      padding-bottom: 3px;
+      background-color: red !important;
+    }
+    .posFix {
+      margin-top: -18%;
+    }
+    .posFix2 {
+      margin-top: -9%;
+    }
+  
   }
 }

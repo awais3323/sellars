@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext,useMemo } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import "./Navbar.css";
 import { FaSearch } from "react-icons/fa";
 import { FaAngleUp } from "react-icons/fa";
@@ -8,8 +8,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { setDarkMode } from "../../../actions/otherActions";
 import { barContext } from "../../../App";
+import { useRef } from "react";
 
-const Navbar = (props) => {
+const Navbar = React.memo((props) => {
   const topload = useContext(barContext)
 
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Navbar = (props) => {
   const [search, setsearch] = useState(false);
   const [keyword, setkeyword] = useState("");
 
-  let { modes } = useSelector((state) => state.DarkMode);
+  let { modes } = props;
 
   const onChangeclick = () => {
     let modeSet;
@@ -50,25 +51,28 @@ const Navbar = (props) => {
     }
   };
 
-  const NavbarFixing = () => {
-    if (window.scrollY >= 30) {
-      setnavbar(true);
-    } else { 
-      setnavbar(false);
-    }
-  };
-  const changeSearchBar = () => {
-    if (search === false) {
-      setsearch(true);
-    } else {
-      setsearch(false);
-    }
-  };
 
-  window.addEventListener("scroll", NavbarFixing);
+  useEffect(() => {
+    window.onscroll = () => {
+      setnavbar(window.pageYOffset <= 5 ? false : true);
+      return () => (window.onscroll = null);
+    };
+  }, []);
 
+  // const changeSearchBar = () => {
+  //   if (search === false) {
+  //     setsearch(true);
+  //   } else {
+  //     setsearch(false);
+  //   }
+  // };
+
+  // window.addEventListener("scroll", NavbarFixing);
+
+  // let render = useRef(0)
   return (
     <>
+    {/* <h1>{render.current++}</h1> */}
       {search ? (
         <div
           className={`container ${modes === true ? `blackImp` : `whiteImp`}`}
@@ -93,7 +97,7 @@ const Navbar = (props) => {
             </button>
             <FaAngleUp
               className="mx-3 fs-2 green-text"
-              onClick={changeSearchBar}
+              // onClick={changeSearchBar}
             />
           </form>
         </div>
@@ -101,16 +105,8 @@ const Navbar = (props) => {
         <nav
           className={` ${
             navbar
-              ? `navbar navbar-expand-lg navbar-${
-                  modes ? `dark` : `light`
-                } bg-${modes ? `dark` : `light`} fixed-top navbar-boxShadow ${
-                  modes ? "blackImp" : "whiteImp"
-                }`
-              : `navbar navbar-expand-lg navbar-${
-                  modes ? `dark` : `light`
-                } bg-${modes ? `dark` : `light`} ${
-                  modes ? "blackImp" : "whiteImp"
-                }`
+              ? `navbar navbar-expand-lg navbar-${modes ? `dark` : `light`} bg-light fixed-top navbar-boxShadow ${modes ? "blackImp" : "whiteImp"}`
+              : `navbar navbar-expand-lg navbar-${ modes ? `dark` : `light`} bg-light ${ modes ? "blackImp" : "whiteImp"}`
           }`}
         >
           <div className="container">
@@ -157,12 +153,12 @@ const Navbar = (props) => {
                 </li>
                 <li className="nav-item px-2 py-2">
                   <a className="nav-link green-text-border" href="#">
-                    Link
+                    About Us
                   </a>
                 </li>
                 <li className="nav-item px-2 py-2">
                   <a className="nav-link green-text-border" href="#">
-                    Link
+                    Admins                    
                   </a>
                 </li>
                 <li className="nav-item dropdown px-2 py-2">
@@ -270,7 +266,7 @@ const Navbar = (props) => {
             </div>
             <FaSearch
               className="mx-2 OH-green-text"
-              onClick={changeSearchBar}
+              // onClick={changeSearchBar}
               style={{ color: `${modes ? `white` : `black`}` }}
             />
           </div>
@@ -278,6 +274,6 @@ const Navbar = (props) => {
       )}
     </>
   );
-};
+});
 
 export default Navbar;

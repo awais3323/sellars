@@ -8,7 +8,6 @@ import AllOrder from "../Admin_others/AllOrder";
 import { VscRefresh } from "react-icons/vsc";
 import SmallBoxes_ad from "../Admin_others/Admin_Mainthings/SmallBoxes_ad";
 import Graphs from "../Admin_others/Admin_Mainthings/Graphs";
-import { useRef } from "react";
 
 
 
@@ -134,7 +133,6 @@ const MainContentBox = React.memo(() => {
       setPendingOrders(checkingPend);
     }
   }
-
   return (
     <>
       <div className="contentBox">

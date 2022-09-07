@@ -8,7 +8,7 @@ import {
 } from "../../actions/productAction";
 import Loader from "../layout/Loader/Loader";
 import Product from "../Home/Product";
-import { useEffect } from "react";
+import { useEffect,useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import { useState } from "react";
@@ -16,8 +16,9 @@ import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import {useAlert} from "react-alert"
 import MetaData from "../layout/MetaData";
+import { useRef } from "react";
 
-import { animateVisualElement } from "framer-motion";
+
 
 
 const Products = (props) => {
@@ -29,6 +30,9 @@ const Products = (props) => {
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
   };
+  const { keyword } = useParams();
+  const { modes } = props;
+  const key = keyword;
 
   const priceHandler = (event, newPrice) => {
     setprice(newPrice);
@@ -41,30 +45,16 @@ const Products = (props) => {
     resultPerPage,
     filteredProductCount,
   } = useSelector((state) => state.products);
-  const { modes } = useSelector((state) => state.DarkMode);
 
-  const {
-    producter,
-    // filteredProductCount,
-  } = useSelector((state) => state.pageProoductCategory);
-
-  const { keyword } = useParams();
-  const key = keyword;
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (error) {
       alert.error(error)
       dispatch(clearErrors())
     }
     dispatch(getProduct(key, CurrentPage, price, rating));
-    dispatch(getProductCategories(key, CurrentPage, price, rating));
+    // dispatch(getProductCategories(key, CurrentPage, price, rating));
   }, [dispatch, key, CurrentPage, price, rating]);
 
-  let count = filteredProductCount;
-
-  const filProd =Object.assign(products,producter)
-
-  
   window.addEventListener("load", props.changingState);
   return (
     <Fragment>
@@ -115,13 +105,13 @@ const Products = (props) => {
             </fieldset>
           </div>
           <div className="products container2 my-5" id="container2">
-            {filProd &&
-              filProd.map((product) => (
+            {products &&
+              products.map((product) => (
                 <Product key={product._id} product={product} />
               )).reverse()}
           </div>
 
-          {resultPerPage < count && (
+          {resultPerPage < filteredProductCount && (
             <div className="paginationBox">
               <Pagination
                 activePage={CurrentPage}

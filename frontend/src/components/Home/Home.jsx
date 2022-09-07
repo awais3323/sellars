@@ -14,11 +14,14 @@ import { useAlert } from "react-alert";
 const Home = (props) => {
   const alert = useAlert();
   const dispatch = useDispatch();
+
+  const{modes}= props;
+
   const [filProd, setfilProd] = useState("")
-  const { loading, error, products, productsCount } = useSelector(
+
+  const { loading, error, products,  } = useSelector(
     (state) => state.products
   );
-  const { modes } = useSelector((state) => state.DarkMode);
 
   useEffect(() => {
     if (error) {
@@ -36,7 +39,7 @@ const Home = (props) => {
   
   useEffect(() => {
     prdoucts_Uniqueing()
-  }, [products]);
+  }, [!loading]);
 
 function prdoucts_Uniqueing(){
 

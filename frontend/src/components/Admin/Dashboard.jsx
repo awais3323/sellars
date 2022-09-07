@@ -5,12 +5,10 @@ import SideBar from './Admin_others/SideBar'
 import "./dashboard.css"
 
 const Dashboard = () => {
-  
 
   return (
     <>
     <MetaData title="Dashboard Orders" />
-
     <div className='mainBoxes'>
       
       {/* As Salam O Alaikum!!! kia haal hai ap ke  */}
@@ -21,4 +19,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default React.memo(Dashboard);

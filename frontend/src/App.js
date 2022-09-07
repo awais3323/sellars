@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext,useLayoutEffect } from "react";
 import Navbar from "./components/layout/Header/Navbar";
 import UpperNavbar from "./components/layout/Header/UpperNavbar";
 import {
@@ -50,15 +50,18 @@ const App = React.memo(() => {
   const { modes } = useSelector((state) => state.DarkMode);
   const { isAuthenticated, user } = useSelector((state) => state.user);
   
-  useEffect(() => {
+  
+  useLayoutEffect(() => {
     store.dispatch(loadUser());
     store.dispatch(getProduct());
     AOS.init();
     AOS.refresh();
-    changingState();
     // return changingState()
   }, []);
-
+  useEffect(() => {
+    changingState();
+  }, []);
+  
   useEffect(() => {
     let checker = window.location.pathname.startsWith("/admin");
     setshowNav(checker);
@@ -102,7 +105,7 @@ const App = React.memo(() => {
           {showNav !== false ||
             (showNav !== null && (
               <>
-                <Navbar />
+                <Navbar modes={modes}/>
                 <LowerCatNav />
               </>
             ))}
@@ -150,9 +153,9 @@ const App = React.memo(() => {
               path="/admin/dashboard/make_Products/NewProduct"
               element={user?.role === "admin" || user?.role === "admin_one"?  <MakeProductsAdmin/>:<Notallowed /> }
             />
-            <Route exact index path="/" element={<Home />} />
+            <Route exact index path="/" element={<Home modes={modes}/>} />
             <Route exact path="/products/:id" element={<ProductDetails />} />
-            <Route exact path="/product" element={<Products />} />
+            <Route exact path="/product" element={<Products modes = {modes}/>} />
             <Route exact path="/sale" element={<SaleProducts />} />
             <Route exact path="/limited" element={<Limitedproducts />} />
             <Route path={"/product/:keyword"} element={<Products />} />
