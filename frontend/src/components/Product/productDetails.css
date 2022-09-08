@@ -230,7 +230,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .insiderCol,.insiderCol2{
   /* background-color: red; */
-  width: 40%;
+  width: 45%;
   display: flex;
   flex-direction: row;
   /* background-color: red; */
@@ -587,6 +587,16 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   .mainHeading{
     margin-bottom: 4vmax;
+  }
+  .insiderCol2{
+    width: 100%;
+    
+  }
+  .colorsDiv2{
+    font-size: 2vmax;
+    width: 100%;
+    /* background-color: red; */
+    justify-content: space-between;
   }
 }
 

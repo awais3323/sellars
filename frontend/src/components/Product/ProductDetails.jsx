@@ -27,7 +27,7 @@ const ProductDetails = React.memo((props) => {
 const {changingState} = props
 
   const { loading,products } = useSelector((state) => state.products);
-  // const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const { modes } = useSelector((state) => state.DarkMode);
 
   // console.log(products)
@@ -175,6 +175,7 @@ useEffect(()=>{
     <Fragment>
       <MetaData title={`${product?.name}`} />
       {/* <h1>{render.current++}</h1> */}
+
       <div
         className="ProductDetails"
       >
@@ -248,7 +249,7 @@ useEffect(()=>{
                   </div>
               </div>
           <div className="colorsDiv2">
-            <span >Sizes : </span>
+            <span >Sizes: </span>
             <div className="insiderCol2">
                 {
                   sizesSP?.length > 0? sizesSP.map((s)=>(
@@ -351,6 +352,9 @@ useEffect(()=>{
             </button> */}
           </div>
         </div>
+      </div>
+      <div className="userDiv">
+
       </div>
       <h3 className="homeHeading greet" data-aos="fade-up">
         REVIEWS

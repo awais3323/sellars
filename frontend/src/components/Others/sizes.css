@@ -1,6 +1,15 @@
 .Sizes{
     /* background-color: var(--customColorcon); */
     border-bottom: 2px solid var(--customColorcon_orange);
-    /* margin-left: 1vmax; */
+    font-size: 1vmax;
+    margin-left: 1vmax;
     /* padding: 0.6vmax; */
+}
+
+@media screen and (max-width: 600px) {
+    .Sizes{
+        font-size: 2vmax;
+        margin-left: 1vmax;
+        /* padding: 0.6vmax; */
+    }
 }
