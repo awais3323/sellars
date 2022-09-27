@@ -1,0 +1,8 @@
+.mainContentBox{
+    width: 97%;
+    float: right;
+    height: 113vh;
+    color: var(--customColorcon_font);
+    background-color: var(--customColorcon);
+    /* background-color: green ; */
+}

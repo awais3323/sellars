@@ -1,0 +1,69 @@
+:root {
+	--customColorcon: RGB(245, 249, 252);
+    --customColorcon_font:white;
+
+}
+.user_Card {
+    width: 14vmax;
+    height: 25vmax;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: red !important; */
+    background-color: var(--customColorcon);
+    border-radius: 20px;
+    /* flex-wrap: wrap; */
+    margin-bottom: 1vmax;
+    text-decoration: none;
+}
+.user_img_box{
+    background-color: transparent;
+    width: 90%;
+    height: 50%;
+    margin-top: 0.3vmax;
+
+    /* margin: auto; */
+    align-self: center;
+}
+.detailsdiv{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.user_Image{
+    width: 100%;
+    height: 12vmax;
+    border-radius: 20px;
+}
+.divpad{
+    padding: 0.4vmax;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.divpad p{
+    /* color: orange; */
+    color: var(--customColorcon_font);
+    font-size: 0.71vmax;
+}
+.coloror{
+    color: orange !important;
+}
+@media screen and (max-width: 600px) {
+    .user_Card {
+        width: 25vmax;
+        height: 46vmax;
+        margin-top: 1vmax;
+    }   
+    .user_Image{
+        width: 100%;
+        height: 20vmax;
+        border-radius: 20px;
+    }
+    .divpad p{
+        font-size: 1.31vmax;
+    }
+}

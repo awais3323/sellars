@@ -1,0 +1,15 @@
+.tags{
+    background-color: rgba(128, 128, 128, 0.281);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 0.3vmax;
+    margin: 0.81vmax 0.6vmax;
+    cursor:pointer;
+}
+@media screen and (max-width: 1200px) {
+    .tags{
+        padding: 0.9vmax;
+    }
+}

@@ -1,0 +1,55 @@
+:root {
+	--customColorcon: RGB(245, 249, 252);
+    --customColorcon_two:white;
+    --customColorcon_font:white;
+    --customColorcon_boxshd:rgba(166,155,155,0.55);
+    --customColorcon_orange:#ff8c32;
+
+}
+.strikeboxes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--customColorcon);
+    padding: 0.8vmax;
+    margin: 0.2vmax;
+    border-radius: 20px;
+    color: var(--customColorcon_font);
+    font-size: 0.7vmax;
+}
+.upperStrike{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.3vmax;
+    /* background-color: red; */
+}
+.delIcon{
+    padding: 0.4vmax;
+    font-size: 1.5vmax;
+    border-radius: 20px;
+}
+.delIcon:hover{
+    background-color: var(--customColorcon_two);
+}
+.coloror{
+    color: var(--customColorcon_orange);
+}
+.colorch{
+    color: var(--customColorcon_font);
+}
+
+@media screen and (max-width: 600px) {
+    .strikeboxes{
+        font-size: 1.4vmax;
+        padding: 1vmax;
+        margin: 0.5vmax;
+    }
+    .delIcon{
+        padding: 0.2vmax;
+        font-size: 2vmax;
+    }
+}

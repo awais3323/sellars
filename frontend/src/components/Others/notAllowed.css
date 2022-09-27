@@ -1,0 +1,28 @@
+.notAllowed_div{
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap:wrap ;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+    font-weight: 500;
+    font-size: 1.0vmax;
+}
+
+.directingBtn{
+    background-color: var(--customColorcon_orange);
+    padding: 1vmax;
+    color: white;
+    text-decoration: none;
+    border-radius:20px ;
+    transition: all 0.3s ease-in-out;
+}
+.directingBtn:hover{
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+
+    border: 2px solid var(--customColorcon_orange);
+    color: var(--customColorcon_orange);
+}

@@ -1,0 +1,272 @@
+:root {
+  --orange: #ff8c32;
+  --orangeLight: #ff8b328c;
+  --customColor: rgba(0, 0, 0, 0.678);
+  --customColorin: white;
+  --customColorcon_font:white;
+
+}
+.profileContainer {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 70%;
+  justify-content: space-around;
+  /* background-color: pink; */
+  padding: 5vmax;
+
+}
+.mainUserCont{
+  /* background-color: greenyellow; */
+  width: 100%;
+  height: 110vh;
+}
+
+.strikeSection{
+  /* background-color: red */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 50vh;
+  /* color: var(--customColorin); */
+}
+.strikein{
+  width: 60%;
+  padding: 2vmax 4vmax;
+  padding-right: 1vmax;
+  /* width: 100%; */
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid var(--orangeLight) ;
+  border-radius: 4px;
+  font: 500 0.9vmax "poppins";
+  outline: none;
+  color: var(--customColorcon_orange);
+  background-color: transparent;
+  letter-spacing: 0.51px;
+  transition: all 0.2s ease-in-out;  
+}
+#roler{
+  width: 30%;
+}
+.strikeTextArea{
+  resize: none;
+}
+.firstContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1vmax;
+}
+.avatar {
+  height: 20vmax;
+  border-radius: 30px;
+  transition: all 0.3s ease-in-out;
+}
+.avatar:hover {
+  transform: translateY(-0.51vmax);
+  transition: all 0.3s ease-in-out;
+}
+.editProfilebtn {
+  text-decoration: none;
+  padding: 10px;
+  margin: 1vmax;
+  width: 80%;
+  text-align: center;
+  color: var(--orange);
+  border: 2px solid var(--orange);
+  border-radius: 10px;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+.shorter{
+  width: 20% ;
+
+}
+.middler{
+  width: 40%;
+
+}
+.editProfilebtn:hover {
+  background-color: var(--orange);
+  color: var(--customColorin);
+  transition: all 0.2s ease-in-out;
+}
+
+.SideSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  /* background-color: aqua; */
+  padding: 1vmax;
+  height: 50vh;
+  width: 30vmax;
+
+  /* text-align: center; */
+}
+.dropDownBadges{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;  
+}
+.nameUser {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.nameUser:hover h5{
+    animation:  shake 0.4s;
+  }
+  
+  @keyframes shake{
+    0%{
+      transform: translateX(0)
+    }
+    25%{
+      transform: translateX(25px);
+    }
+      
+    50%{
+      transform: translateX(-25px);
+    }
+    100%{
+      transform: translateX(0px);
+    }
+}
+
+.nameUser2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /* background-color: cadetblue; */
+  text-align: center;
+}
+.headTitle {
+  color: var(--orange);
+}
+.Othertitle {
+  color: grey;
+  margin-left: 10px;
+}
+.LowerBtn {
+  border: 2px solid var(--orange);
+  padding: 10px;
+  margin: 0.2vmax;
+  text-decoration: none;
+  color: var(--orange);
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+  background-color: transparent;
+}
+
+.LowerBtn:hover {
+  background-color: var(--orange);
+  color: var(--customColorin);
+  transition: all 0.2s ease-in-out;
+}
+#strikeTextArea::-webkit-scrollbar {
+  width: 7px;
+  /* background-color: red; */
+}
+
+#strikeTextArea::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+#strikeTextArea::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color:var(--customColorcon_orange);
+}
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////// for the dropdown --start */
+#year{
+width: 30% !important ;
+outline: none !important;
+background-color: var(--customColor);
+color:var(--customColorcon_orange);
+}
+#year option{
+  color: var(--customColorcon_orange);
+  background-color: var(--customColor);
+  /* color: green; */
+
+}
+/* ///////////////////////////////////////////////////////////////////////////////////// for the dropdown --end */
+@media screen and (max-width: 600px) {
+ 
+  .sidVer2{
+    height: 70vh;
+  }
+  .version2{
+    width: 80%;    
+  }
+  .SideSection {
+    width: 60vmax !important;
+    height: 100vh !important;
+  }
+  .avatar {
+    height: 30vmax;
+  }
+  .LowerBtn {
+    width: 100%;
+  }
+  .nameUser {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 1px;
+  }
+  .mainUserCont{
+    width: 80%;
+    height: 130vh;
+  }
+  .Othertitle{
+    font-size: 2vmax;
+  }
+  .other_two{
+    font-size: 1.7vmax;
+  }  
+  .strikein{
+    width: 90%;
+    padding: 2vmax 4vmax;
+    padding-right: 1vmax;
+    /* width: 100%; */
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid var(--orangeLight) ;
+    border-radius: 4px;
+    font: 500 1.4vmax "poppins";
+    outline: none;
+    color: var(--customColorcon_font);
+    background-color: transparent;
+    letter-spacing: 0.51px;
+    transition: all 0.2s ease-in-out;
+  }
+  .strikeSection{
+    height: 50vh;
+  }#roler{
+    width: 70%;
+  }
+  .dropDownBadges{
+    flex-direction: column;
+    width: 100%;  
+  }
+  #year{
+    width: 100% !important;
+  }
+}

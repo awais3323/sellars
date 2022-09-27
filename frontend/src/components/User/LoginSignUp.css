@@ -1,0 +1,294 @@
+:root{
+    --orange :#FF8C32;
+    --orangeLight :#ff8b328c;
+    --customColor:rgba(0, 0, 0, 0.678);
+    --customColorin:white;
+  }
+  .black__bg{
+    background-color: black !important;
+  }
+  
+  .white__bg{
+    background-color: white;
+  }
+.LoginSignUpContainer {
+    width: 100%;
+    height: 100vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    /* background-color: rgb(231, 231, 231); */
+    padding: 1vmax;
+}
+.or{
+  font: 300 0.7vmax "poppins" !important;
+margin: 0.4vmax;
+font-weight: 900;
+}
+  .GoogleLogin_Button{
+    width: 50%;
+    border: 1px solid var(--orange) !important;
+    box-shadow: none !important;
+    padding: 0.6vmax !important;
+    font: 300 0.7vmax "poppins" !important;
+    border-radius: 10px !important;
+    justify-content: center !important;
+    transition: all 0.5s !important;
+
+  }
+  .GoogleLogin_Button:hover{
+    color: var(--orange) !important;
+    transition: all 0.5s !important;
+
+  }
+  .LoginSignUpBox {
+      background-color: white;
+      width: 55vw;
+      height: 85vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 30px;
+    /* border: 2px solid rgba(128, 128, 128, 0.396); */
+    transition: all 0.2s ease-in-out;
+}
+.LoginSignUpBox:hover {
+    /* border: 2px solid var(--orange); */
+    /* transition: all 0.2s ease-in-out; */
+}
+  .login_signUp_toggle {
+    display: flex;
+    height: 3vmax;
+  }
+  .login_signUp_toggle > p {
+    color: var(--customColor);
+    font: 300 1vmax "Roboto";
+    transition: all 0.5s;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    width: 100%;
+  }
+  .login_signUp_toggle > p:hover {
+    color: tomato;
+  }
+  
+  .LoginSignUpBox > div > button {
+    background-color: tomato;
+    height: 3px;
+    width: 50%;
+    border: none;
+    transition: all 0.5s;
+  }
+  
+  .loginForm,
+  .signUpForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: 1.5vmax;
+    justify-content: space-evenly;
+    height: 70%;
+    transition: all 0.5s;
+  }
+  
+  .signUpForm {
+    transform: translateY(-100%) translateX(-100vmax);
+  }
+  
+  .loginForm > div,
+  .signUpForm > div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: red; */
+  }
+
+  .loginForm > div > input,
+  .signUpForm > div > input {
+    padding: 2vmax 4vmax;
+    padding-right: 1vmax;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid var(--orangeLight) ;
+    border-radius: 4px;
+    font: 500 0.9vmax "poppins";
+    outline: none;
+    color: var(--customColor);
+    background-color: transparent;
+    letter-spacing: 0.51px;
+    transition: all 0.2s ease-in-out;   
+}
+.loginForm > div > input:focus,
+.signUpForm > div > input:focus {
+      transition: all 0.2s ease-in-out;
+      border-bottom: 1px solid var(--orange);
+  }
+  
+  .loginForm > div > svg,
+  .signUpForm > div > svg {
+    /* position: absolute; */
+    transform: translateX(1vmax);
+    font-size: 1.6vmax;
+    color: var(--customColor);
+}
+
+.loginForm > a {
+      color: var(--customColor);
+    text-decoration: none;
+    align-self: flex-end;
+    /* width: 30%; */
+    transition: all 0.5s;
+    font: 500 0.8vmax "Gill Sans";
+  }
+  
+  .loginForm > a:hover {
+    color: black;
+  }
+  #registerImage{
+    /* background-color: green; */
+    /* padding: 20px; */
+  }
+  
+  #registerImage > img {
+    width: 5vmax;
+    border-radius: 40%;
+    margin: 10px;
+  }
+  #registerImage > input {
+    display: flex;
+    padding: 0%;
+  }
+  
+  #registerImage > input::file-selector-button {
+    cursor: pointer;
+    width: 40%;
+    z-index: 2;
+    height: 5vh;
+    border: none;
+    margin: 1%;
+    font: 400 0.8vmax "poppins";
+    transition: all 0.5s;
+    padding: 0 1vmax;
+    color: var(--customColor);
+    background-color: transparent;
+  }
+  
+  #registerImage > input::file-selector-button:hover {
+    background-color: var(--orange);
+    color: white;
+  }
+  
+  .loginBtn,
+  .signUpBtn {
+    border: none;
+    background-color: tomato;
+    font: 300 0.9vmax "Roboto";
+    width: 50%;
+    padding: 0.8vmax;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-radius: 10px;
+    outline: none;
+    color: white;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+  }
+  
+  .loginBtn:hover,
+  .signUpBtn:hover {
+    background-color: rgb(179, 66, 46);
+    transition: all 0.5s;
+
+  }
+  
+  .shiftToLeft {
+    transform: translateX(-100%);
+  }
+  .shiftToNeutral {
+    transform: translateX(0%);
+  }
+  
+  .shiftToNeutralForm {
+    transform: translateX(0%) translateY(-100%);
+  }
+  
+  .shiftToRight {
+    transform: translateX(100%);
+  }
+  .forgetpass{
+    /* padding: 2.5vmax 5vmax; */
+    font-family: "poppins";
+  }
+  .upauth{
+    /* background-color: red; */
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6vmax;
+  }
+  @media screen and (max-width: 600px) {
+    .LoginSignUpContainer {
+      height: 115vh;
+    }
+
+    .LoginSignUpBox {
+      width: 100vw;
+      height: 95vh;
+    }
+    .login_signUp_toggle {
+      height: 5vmax;
+    }
+    .login_signUp_toggle > p {
+      font: 300 1.5vmax "Roboto";
+    }
+  
+    .loginForm,
+    .signUpForm {
+      padding: 5vmax;
+    }
+  
+    .loginForm > div > input,
+    .signUpForm > div > input {
+      padding: 2.5vmax 5vmax;
+      font: 300 1.7vmax "poppins";
+    }
+  
+    .loginForm > div > svg,
+    .signUpForm > div > svg {
+      font-size: 2.8vmax;
+    }
+  
+    .loginForm > a {
+      font: 500 1.8vmax "Gill Sans";
+    }
+  
+    #registerImage > img {
+      width: 8vmax;
+      border-radius: 100%;
+    }
+  
+    #registerImage > input::file-selector-button {
+      height: 7vh;
+      font: 400 1.8vmax "poppins";
+    }
+  
+    .loginBtn,
+    .signUpBtn {
+      width: 100%;
+      font: 300 1.9vmax "Roboto";
+      padding: 1.8vmax;
+    }
+    .GoogleLogin_Button{
+      width: 100%;
+      font: 300 1.9vmax "poppins" !important;
+      padding: 1.0vmax !important;
+    }
+  }

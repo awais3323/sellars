@@ -1,0 +1,4 @@
+.mainContentBox{
+    display: flex;
+    flex-direction: row;
+}

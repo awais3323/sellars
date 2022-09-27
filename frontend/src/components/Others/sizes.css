@@ -1,0 +1,88 @@
+/* .colDiv{
+    width: 1.5vmax;
+    height: 1.5vmax;
+    border-radius: 100%;
+    cursor: pointer;
+    text-align:center ;
+    border: 2px solid grey;
+} */
+.radio-tile-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .hidden{
+    visibility: hidden;
+  }
+  .radio-tile-group .input-container {
+    position: relative;
+    text-align: center;
+
+    /* margin: 0.9rem; */
+  }
+  
+  .radio-tile-group .input-container .radio-button {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .radio-tile {
+    border: 1px solid #eea236;
+  }
+  
+  .radio-tile-group .input-container .radio-tile-edit2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 1.5vmax;
+    height: 1.5vmax;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 0.2rem;
+    transition: transform 300ms ease;
+    border: 2px solid rgba(128, 128, 128, 0.516);
+    font-size: 0.71vmax;
+    padding: 0.71vmax;
+  }
+  
+  @media (min-width: 375px) and (max-width: 812px) {
+    .radio-tile-group .input-container .radio-tile {
+      margin-inline: 18px;
+    }
+  }
+  
+  .radio-tile-group .input-container .radio-button:checked+.radio-tile {
+    border: 3px solid #2980b9;
+    font-size: 12px;
+    color: #797979;
+    transform: scale(1.05, 1.05);
+  }
+  
+  .radio-tile-group .input-container .radio-button:checked+.radio-tile .icon svg {
+    fill: white;
+    background-color: #2980b9;
+  }
+  
+  .radio-tile-group .input-container .radio-button:checked+.radio-tile-edit2 {
+    /* font-size: 12px; */
+    color: #797979;
+    transform: scale(1.05, 1.05);
+    outline: 6px solid orange;
+    border: none;
+  }
+@media screen and (max-width: 1200px) {
+    .radio-tile-group .input-container .radio-tile-edit2 {
+        width: 3.4vmax;
+        height: 3.4vmax;
+        padding: 2vmax;
+        font-size: 1.8vmax;
+      }
+}

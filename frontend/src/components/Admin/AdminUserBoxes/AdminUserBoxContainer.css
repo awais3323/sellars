@@ -1,0 +1,5 @@
+.mainContentBox{
+    width: 97%;
+    display: flex;
+    flex-direction: row;
+}
