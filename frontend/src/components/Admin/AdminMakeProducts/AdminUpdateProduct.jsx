@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./newProduct.css";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, updateProduct } from "../../../actions/productAction";
+import { clearErrors, getProduct, updateProduct } from "../../../actions/productAction";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../../layout/MetaData";
@@ -41,6 +41,7 @@ const AdminUpdateProduct = () => {
       )
       navigate("/admin/dashboard/products");
       dispatch({ type: UPDATE_PRODUCT_RESET });
+      dispatch(getProduct());
     }
   }, [dispatch, alert, error, navigate, success]);
 

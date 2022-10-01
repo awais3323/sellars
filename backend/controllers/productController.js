@@ -7,13 +7,17 @@ const cloudinary = require("cloudinary");
 
 // Create Product --- Admin
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
-
-  if (req.user.strikes.length >=5) {
-    return next(new Errorhandler("This Account have 5 strikes it is allowed to make further products contact Admin", 404));
+  if (req.user.strikes.length >= 5) {
+    return next(
+      new Errorhandler(
+        "This Account have 5 strikes it is allowed to make further products contact Admin",
+        404
+      )
+    );
   }
   let images = [];
   // console.log(req.body.Tags)
-  if (typeof(req.body.images) === "string") {
+  if (typeof req.body.images === "string") {
     images.push(req.body.images);
   } else {
     images = req.body.images;
@@ -34,17 +38,17 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 
   const Tagzs = [];
   Tagzs.push({
-    tag1:req.body.Tags[0],
-    tag2:req.body.Tags[1],
-    tag3:req.body.Tags[2],
-    tag4:req.body.Tags[3],
-    tag5:req.body.Tags[4],
-  })
+    tag1: req.body.Tags[0],
+    tag2: req.body.Tags[1],
+    tag3: req.body.Tags[2],
+    tag4: req.body.Tags[3],
+    tag5: req.body.Tags[4],
+  });
   req.body.Tags = Tagzs;
   req.body.images = imagesLinks;
   req.body.user = req.user.id;
   const product = await Product.create(req.body);
-  res.status(201).json({ success: true ,product});
+  res.status(201).json({ success: true, product });
 });
 
 // Get all products
@@ -53,10 +57,13 @@ exports.getAllProucts = catchAsyncErrors(async (req, res, next) => {
 
   const resultPerPage = 100;
   const productsCount = await Product.countDocuments();
-  const apiFeature = new ApiFeatures(Product.find().sort({"createdAt": 1}), req.query)
+  const apiFeature = new ApiFeatures(
+    Product.find().sort({ createdAt: 1 }),
+    req.query
+  )
     .search()
     .filter();
-    
+
   let products = await apiFeature.query;
   // const apiFeatures = new ApiFeatures(Product.find(), req.query)
   //   .searchCat()
@@ -69,8 +76,6 @@ exports.getAllProucts = catchAsyncErrors(async (req, res, next) => {
 
   apiFeature.pagination(resultPerPage);
 
-
-
   res.status(200).json({
     success: true,
     products,
@@ -81,22 +86,43 @@ exports.getAllProucts = catchAsyncErrors(async (req, res, next) => {
   });
 });
 exports.getSellerProuctsDates = catchAsyncErrors(async (req, res, next) => {
-  const  productDate = await Product.find({ user: req.user._id }).select("createdAt");
+  const productDate = await Product.find({ user: req.user._id }).select(
+    "createdAt"
+  );
 
-  let ordDatArr = productDate.map((od)=> od.createdAt)
-  
-  let real_ordDatArr=[];
-  ordDatArr.forEach((ele)=>{
-    
+  let ordDatArr = productDate.map((od) => od.createdAt);
+
+  let real_ordDatArr = [];
+  ordDatArr.forEach((ele) => {
     let ele_s = JSON.stringify(ele).split("-");
-    let temp_date = `${ele_s[2].slice(0, 2)} - ${ele_s[1]} - ${ele_s[0]}`
-    real_ordDatArr.push(temp_date.split("-"))
-  })
+    let temp_date = `${ele_s[2].slice(0, 2)} - ${ele_s[1]} - ${ele_s[0]}`;
+    real_ordDatArr.push(temp_date.split("-"));
+  });
   // console.log(real_ordDatArr)
 
   res.status(200).json({
     success: true,
-    real_ordDatArr
+    real_ordDatArr,
+  });
+});
+
+exports.ProductTagsPanga = catchAsyncErrors(async (req, res, next) => {
+  const products = await Product.find();
+
+  products.forEach((product_1) => {
+    let v = [];
+
+      v.push(product_1.Tags[0].tag1) 
+      v.push(product_1.Tags[0].tag2) 
+      v.push(product_1.Tags[0].tag3) 
+      v.push(product_1.Tags[0].tag4) 
+      v.push(product_1.Tags[0].tag5) 
+    console.log(v)
+  });
+
+  res.status(200).json({
+    Ho_gaya: true,
+    products,
   });
 });
 
@@ -122,7 +148,6 @@ exports.getAllProuctsAccCats = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-
 // Get Single Product details
 exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
   let product = await Product.findById(req.params.id);
@@ -137,8 +162,13 @@ exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
 
 //Update Products
 exports.updateProducts = catchAsyncErrors(async (req, res, next) => {
-  if (req.user.strikes.length >=5) {
-    return next(new Errorhandler("This Account have 5 strikes it is allowed to edit further products contact Admin", 404));
+  if (req.user.strikes.length >= 5) {
+    return next(
+      new Errorhandler(
+        "This Account have 5 strikes it is allowed to edit further products contact Admin",
+        404
+      )
+    );
   }
   let product = await Product.findById(req.params.id);
   if (!product) {
@@ -147,12 +177,19 @@ exports.updateProducts = catchAsyncErrors(async (req, res, next) => {
       .json({ success: false, message: "Product not found" });
   }
 
-  if(req.user.role === "user"){
-    return next(new Errorhandler("You are not authorized for this action", 401));
+  if (req.user.role === "user") {
+    return next(
+      new Errorhandler("You are not authorized for this action", 401)
+    );
   }
-  if(req.user.role === "admin"){
-    if(req.user._id !== product.user){
-    return next(new Errorhandler("You are not authorized for action on this product", 401));
+  if (req.user.role === "admin") {
+    if (req.user._id !== product.user) {
+      return next(
+        new Errorhandler(
+          "You are not authorized for action on this product",
+          401
+        )
+      );
     }
   }
 
@@ -188,16 +225,15 @@ exports.updateProducts = catchAsyncErrors(async (req, res, next) => {
 
   const Tagzs = [];
   Tagzs.push({
-    tag1:req.body.Tags[0],
-    tag2:req.body.Tags[1],
-    tag3:req.body.Tags[2],
-    tag4:req.body.Tags[3],
-    tag5:req.body.Tags[4],
-  })
+    tag1: req.body.Tags[0],
+    tag2: req.body.Tags[1],
+    tag3: req.body.Tags[2],
+    tag4: req.body.Tags[3],
+    tag5: req.body.Tags[4],
+  });
   req.body.Tags = Tagzs;
   // req.body.images = imagesLinks;
   req.body.user = product.user;
-
 
   // Kamal Ki cheez
   product = await Product.findByIdAndUpdate(req.params.id, req.body, {
@@ -221,13 +257,20 @@ exports.deleteProducts = catchAsyncErrors(async (req, res, next) => {
       .json({ success: false, message: "Product not found" });
   }
 
-  if(req.user.role === "user"){
-    return next(new Errorhandler("You are not authorized for this action", 401));
+  if (req.user.role === "user") {
+    return next(
+      new Errorhandler("You are not authorized for this action", 401)
+    );
   }
 
-  if(req.user.role === "admin"){
-    if(req.user._id !== product.user){
-    return next(new Errorhandler("You are not authorized for action on this product", 401));
+  if (req.user.role === "admin") {
+    if (req.user._id !== product.user) {
+      return next(
+        new Errorhandler(
+          "You are not authorized for action on this product",
+          401
+        )
+      );
     }
   }
   for (let i = 0; i < product.images.length; i++) {
@@ -246,7 +289,7 @@ exports.reviewCreateUpdate = catchAsyncErrors(async (req, res, next) => {
   const review = {
     user: req.user._id,
     name: req.user.name,
-    url:req.user.avatar.url,
+    url: req.user.avatar.url,
     rating: Number(rating),
     comment,
   };

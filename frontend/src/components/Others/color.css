@@ -41,10 +41,10 @@
     width: 1.5vmax;
     height: 1.5vmax;
     font-size: 12px;
-    border-radius: 5px;
+    border-radius: 100px;
     padding: 0.2rem;
     transition: transform 300ms ease;
-    border: 2px solid rgba(128, 128, 128, 0.516);
+    border: 3px solid rgba(128, 128, 128, 0.516);
   }
   
   @media (min-width: 375px) and (max-width: 812px) {

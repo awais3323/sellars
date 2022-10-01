@@ -15,7 +15,7 @@ const Colors = (props) => {
       <div className="input-container">
         <label
           className="radio-tile-label"
-          style={{ backgroundColor: `${s}`, borderRadius: `${5}px` }}
+          style={{ backgroundColor: `${s}`, borderRadius: `${100}px` }}
         >
           <input
             type="radio"

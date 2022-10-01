@@ -212,9 +212,6 @@ const ProductDetails = React.memo((props) => {
           {product ? (
             <>
               <div className="ProductDetails">
-                {/* style={{ backgroundColor: 'grey'}}    >renders {renders.current++}</p> */}
-                {/* <h1>{render.current++}</h1> */}
-
                 <div className="longdiv">
                   <div className="lefter">
                     <div className="left_1">
@@ -262,11 +259,10 @@ const ProductDetails = React.memo((props) => {
                                 />
                               )}
                             </div>
-                            {/* <img
-                            src={product?.images[image].url}
-                            className="bigImg"
-                            id="bigImg"
-                          /> */}
+
+                          {
+                            product?.images?.length > 1? 
+                          
                             <div className="bigOverlay">
                               <div
                                 className="slide_arrows arlef"
@@ -303,6 +299,8 @@ const ProductDetails = React.memo((props) => {
                                 <IoIosArrowForward />
                               </div>
                             </div>
+                            :""
+                            }
                           </>
                         ))}
                     </div>

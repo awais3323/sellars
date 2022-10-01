@@ -55,7 +55,7 @@ const App = React.memo(() => {
   
   const { modes } = useSelector((state) => state.DarkMode);
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  
+
   
   useLayoutEffect(() => {
     store.dispatch(loadUser());

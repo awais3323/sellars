@@ -48,9 +48,9 @@ const productSchema = new mongoose.Schema({
         required: [true, "Category is must"]
     },
     Stock: {
-        type: Number,
+        type: String,
         required: [true, "Please Enter Product Stock"],
-        maxlength: [4, "Stock cannot exceed 4 figures"],
+        // maxlength: [4, "Stock cannot exceed 4 figures"],
         default: 1
     },
     sales:{
@@ -116,6 +116,10 @@ const productSchema = new mongoose.Schema({
             }
         }
     ],
+    tags :{
+        type:String,
+        default:"yes"
+    },
 
     user:{
         type:mongoose.Schema.ObjectId,

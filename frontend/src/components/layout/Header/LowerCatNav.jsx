@@ -22,14 +22,6 @@ const LowerCatNav = () => {
     lbg: "grey",
   };
 
-  // useEffect(() => {
-  //   window.onscroll = () => {
-  //     setnav(window.pageYOffset <= 5 ? false : true);
-  //     return () => (window.onscroll = null);
-  //   };
-  // }, []);
-  // window.addEventListener("scroll", NavbarFixing);
-const render = useRef(0)
   return (
     <>
       <div
@@ -37,7 +29,6 @@ const render = useRef(0)
         className={`${`${isAuthenticated ? `container3 posFix` : `container4 posFix2`}`}`}
         style={{ backgroundColor: `${modes ? dark.bg : light.bg}` }}
         >
-          {/* <h1>{render.current++}</h1> */}
             <AAsOfLowNav
             />
       </div>

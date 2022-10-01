@@ -11,11 +11,13 @@ const {
   getProductCategory,
   getSellerProuctsDates,
   getAllProuctsAccCats,
+  ProductTagsPanga,
 } = require("../controllers/productController");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 const router = express.Router();
 router.route("/product").get(getAllProucts);
 router.route("/producters").get(getAllProuctsAccCats);
+router.route("/productPanga").get(ProductTagsPanga);
 router
   .route("/admin/products/new")
   .post(isAuthenticatedUser, authorizeRoles("admin","admin_one"), createProduct);
